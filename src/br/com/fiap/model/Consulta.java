@@ -1,0 +1,52 @@
+package br.com.fiap.model;
+
+import java.time.LocalDateTime;
+
+public class Consulta {
+    private int id_consulta;
+    private String especialidade;
+    private LocalDateTime data_consulta;
+    private char canal_envio;
+
+    public Consulta() {
+    }
+
+    public Consulta(int id_consulta, String especialidade, LocalDateTime data_consulta, char canal_envio) {
+        this.id_consulta = id_consulta;
+        this.especialidade = especialidade;
+        this.data_consulta = data_consulta;
+        this.canal_envio = canal_envio;
+    }
+
+    public int getId_consulta() {
+        return id_consulta;
+    }
+
+    public void setId_consulta(int id_consulta) {
+        this.id_consulta = id_consulta;
+    }
+
+    public String getEspecialidade() {
+        return especialidade;
+    }
+
+    public void setEspecialidade(String especialidade) {
+        this.especialidade = especialidade;
+    }
+
+    public LocalDateTime getData_consulta() {
+        return data_consulta;
+    }
+
+    public void setData_consulta(LocalDateTime data_consulta) {
+        this.data_consulta = data_consulta;
+    }
+
+    public char getCanal_envio() {
+        return canal_envio;
+    }
+
+    public void setCanal_envio(char canal_envio) {
+        this.canal_envio = canal_envio;
+    }
+}
