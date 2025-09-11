@@ -1,4 +1,4 @@
-package br.com.fiap.infraestructure.connection;
+package br.com.fiap.model.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
