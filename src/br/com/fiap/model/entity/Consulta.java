@@ -1,7 +1,7 @@
 package br.com.fiap.model.entity;
 
 public class Consulta {
-    private int id_consulta;
+    private int idConsulta;
     private String especialidade;
     private String data_consulta;
     private String canal_envio;
@@ -9,19 +9,19 @@ public class Consulta {
     public Consulta() {
     }
 
-    public Consulta(int id_consulta, String especialidade, String data_consulta, String canal_envio) {
-        this.id_consulta = id_consulta;
+    public Consulta(int idConsulta, String especialidade, String data_consulta, String canal_envio) {
+        this.idConsulta = idConsulta;
         this.especialidade = especialidade;
         this.data_consulta = data_consulta;
         this.canal_envio = canal_envio;
     }
 
-    public int getId_consulta() {
-        return id_consulta;
+    public int getIdConsulta() {
+        return idConsulta;
     }
 
-    public void setId_consulta(int id_consulta) {
-        this.id_consulta = id_consulta;
+    public void setIdConsulta(int idConsulta) {
+        this.idConsulta = idConsulta;
     }
 
     public String getEspecialidade() {
