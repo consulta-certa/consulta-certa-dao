@@ -19,8 +19,9 @@ public class ConsultaView {
         String idConsulta = JOptionPane.showInputDialog("Informe o id da nova consulta");
         String especialidade = JOptionPane.showInputDialog("Informe a especialidade da nova consulta");
         String dataConsulta = JOptionPane.showInputDialog("Informe a data da nova consulta");
-        String canalEnvio = JOptionPane.showInputDialog("Informe o canal de envio da nova consulta");
-        controller.inserirConsulta(idConsulta, especialidade, dataConsulta, canalEnvio);
+        String status = JOptionPane.showInputDialog("Informe o canal de envio da nova consulta");
+        String idPaciente = JOptionPane.showInputDialog("Informe o id do paciente da nova consulta");
+        controller.inserirConsulta(idConsulta, especialidade, dataConsulta, status, idPaciente);
     }
 
     private void coletarSelecao () {
@@ -30,9 +31,10 @@ public class ConsultaView {
     private void coletarAtualizacao () {
         String especialidade = JOptionPane.showInputDialog("Informe a especialidade da nova consulta");
         String dataConsulta = JOptionPane.showInputDialog("Informe a data da nova consulta");
-        String canalEnvio = JOptionPane.showInputDialog("Informe o canal de envio da nova consulta");
+        String status = JOptionPane.showInputDialog("Informe o canal de envio da nova consulta");
+        String idPaciente = JOptionPane.showInputDialog("Informe o id do paciente da nova consulta");
         String idConsulta = JOptionPane.showInputDialog("Informe o id da nova consulta");
-        controller.atualizarConsulta(especialidade, dataConsulta, canalEnvio, idConsulta);
+        controller.atualizarConsulta(especialidade, dataConsulta, status, idPaciente, idConsulta);
     }
 
     private void coletarRemocao () {

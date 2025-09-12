@@ -4,16 +4,18 @@ public class Consulta {
     private int idConsulta;
     private String especialidade;
     private String data_consulta;
-    private String canal_envio;
+    private String status;
+    private int id_paciente;
 
     public Consulta() {
     }
 
-    public Consulta(int idConsulta, String especialidade, String data_consulta, String canal_envio) {
+    public Consulta(int idConsulta, String especialidade, String data_consulta, String status, int id_paciente) {
         this.idConsulta = idConsulta;
         this.especialidade = especialidade;
         this.data_consulta = data_consulta;
-        this.canal_envio = canal_envio;
+        this.status = status;
+        this.id_paciente = id_paciente;
     }
 
     public int getIdConsulta() {
@@ -40,11 +42,19 @@ public class Consulta {
         this.data_consulta = data_consulta;
     }
 
-    public String getCanal_envio() {
-        return canal_envio;
+    public String getStatus() {
+        return status;
     }
 
-    public void setCanal_envio(String canal_envio) {
-        this.canal_envio = canal_envio;
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public int getId_paciente() {
+        return id_paciente;
+    }
+
+    public void setId_paciente(int id_paciente) {
+        this.id_paciente = id_paciente;
     }
 }

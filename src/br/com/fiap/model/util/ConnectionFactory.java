@@ -16,10 +16,8 @@ public class ConnectionFactory {
                 "050304"
             );
         } catch (ClassNotFoundException e) {
-            System.err.println("Driver JDBC não encontrado: " + e.getMessage());
             throw new RuntimeException("Erro ao carregar o driver JDBC", e);
         } catch (SQLException e) {
-            System.err.println("Conexão com banco não estabelecida: " + e.getMessage());
             throw new RuntimeException("Erro de conexão com o banco", e);
         }
     }

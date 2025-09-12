@@ -15,22 +15,25 @@ public class ConsultaController {
 
 /* EXECUÇÃO DAS OPERAÇÕES CRUD */
 //  Execução do CREATE
-    public void inserirConsulta(String idConsultaString, String especialidade, String dataConsulta, String canalEnvio) {
+    public void inserirConsulta(String idConsultaString, String especialidade, String dataConsulta, String status, String idPacienteString) {
         if (
             !Validacao.validarInteger(idConsultaString) ||
             !Validacao.validarString(especialidade) ||
-            !Validacao.validarString(canalEnvio)
+            !Validacao.validarString(status) ||
+            !Validacao.validarInteger(idPacienteString)
         ) {
             return;
         }
 
         int idConsulta = Integer.parseInt(idConsultaString);
+        int idPaciente = Integer.parseInt(idPacienteString);
 
         Consulta consulta = new Consulta();
+        consulta.setIdConsulta(idConsulta);
         consulta.setEspecialidade(especialidade);
         consulta.setData_consulta(dataConsulta);
-        consulta.setCanal_envio(canalEnvio);
-        consulta.setIdConsulta(idConsulta);
+        consulta.setStatus(status);
+        consulta.setId_paciente(idPaciente);
 
         JOptionPane.showMessageDialog(null, consultaDAO.inserir(consulta));
     }
@@ -46,21 +49,24 @@ public class ConsultaController {
     }
 
 // Execução do UPDATE
-    public void atualizarConsulta(String especialidade, String dataConsulta, String canalEnvio, String idConsultaString) {
+    public void atualizarConsulta(String especialidade, String dataConsulta, String status, String idPacienteString, String idConsultaString) {
         if (
             !Validacao.validarString(especialidade) ||
-            !Validacao.validarString(canalEnvio) ||
+            !Validacao.validarString(status) ||
+            !Validacao.validarInteger(idPacienteString) ||
             !Validacao.validarInteger(idConsultaString)
         ) {
             return;
         }
 
         int idConsulta = Integer.parseInt(idConsultaString);
+        int idPaciente = Integer.parseInt(idPacienteString);
 
         Consulta consulta = new Consulta();
         consulta.setEspecialidade(especialidade);
         consulta.setData_consulta(dataConsulta);
-        consulta.setCanal_envio(canalEnvio);
+        consulta.setStatus(status);
+        consulta.setId_paciente(idPaciente);
         consulta.setIdConsulta(idConsulta);
 
         JOptionPane.showMessageDialog(null, consultaDAO.atualizar(consulta));

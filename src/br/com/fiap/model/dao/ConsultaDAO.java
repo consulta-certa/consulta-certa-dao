@@ -18,19 +18,19 @@ public class ConsultaDAO {
 //  CREATE
     public String inserir(Consulta consulta) {
         try {
-            PreparedStatement statement = consultaConn.prepareStatement("INSERT INTO consultas VALUES (?, ?, ?, ?)");
+            PreparedStatement statement = consultaConn.prepareStatement("INSERT INTO consultas VALUES (?, ?, ?, ?, ?)");
             statement.setInt(1, consulta.getIdConsulta());
             statement.setString(2, consulta.getEspecialidade());
             statement.setString(3, consulta.getData_consulta());
-            statement.setString(4, consulta.getCanal_envio());
+            statement.setString(4, consulta.getStatus());
+            statement.setInt(5, consulta.getId_paciente());
             statement.execute();
             statement.close();
             return "Dados inseridos na tabela";
 
         } catch (SQLException e) {
-            System.err.println(e.getMessage());
+            throw new RuntimeException("Erro envolvendo SQL Statement", e);
         }
-        return "Operação encerrada.";
     }
 
 //  READ
@@ -43,27 +43,26 @@ public class ConsultaDAO {
             return "Dados selecionados da tabela";
 
         } catch (SQLException e) {
-            System.err.println(e.getMessage());
+            throw new RuntimeException("Erro envolvendo SQL Statement", e);
         }
-        return "Operação encerrada.";
     }
 
 //  UPDATE
     public String atualizar(Consulta consulta) {
         try {
-            PreparedStatement statement = consultaConn.prepareStatement("UPDATE consultas SET especialidade = ?, data_consulta = ?, canal_envio = ? WHERE idConsulta = ?");
+            PreparedStatement statement = consultaConn.prepareStatement("UPDATE consultas SET especialidade = ?, data_consulta = ?, status = ?, id_paciente = ? WHERE idConsulta = ?");
             statement.setString(1, consulta.getEspecialidade());
             statement.setString(2, consulta.getData_consulta());
-            statement.setString(3, consulta.getCanal_envio());
-            statement.setInt(4, consulta.getIdConsulta());
+            statement.setString(3, consulta.getStatus());
+            statement.setInt(4, consulta.getId_paciente());
+            statement.setInt(5, consulta.getIdConsulta());
             statement.executeUpdate();
             statement.close();
             return "Dados atualizados na tabela";
 
         } catch (SQLException e) {
-            System.err.println(e.getMessage());
+            throw new RuntimeException("Erro envolvendo SQL Statement", e);
         }
-        return "Operação encerrada.";
     }
 
 //  DELETE
@@ -76,8 +75,7 @@ public class ConsultaDAO {
             return "Dados removidos da tabela";
 
         } catch (SQLException e) {
-            System.err.println(e.getMessage());
+            throw new RuntimeException("Erro envolvendo SQL Statement", e);
         }
-        return "Operação encerrada.";
     }
 }
