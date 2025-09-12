@@ -21,7 +21,7 @@ public class ConsultaDAO {
             PreparedStatement statement = consultaConn.prepareStatement("INSERT INTO consultas VALUES (?, ?, ?, ?)");
             statement.setInt(1, consulta.getId_consulta());
             statement.setString(2, consulta.getEspecialidade());
-            statement.setObject(3, consulta.getData_consulta());
+            statement.setString(3, consulta.getData_consulta());
             statement.setString(4, consulta.getCanal_envio());
             statement.execute();
             statement.close();
@@ -34,10 +34,10 @@ public class ConsultaDAO {
     }
 
 //  READ
-    public String selecionar(String coluna) {
+    public String selecionar(String id_consulta) {
         try {
-            PreparedStatement statement = consultaConn.prepareStatement("SELECT ? FROM consultas"); // Não sei se é assim
-            statement.setString(1, coluna);
+            PreparedStatement statement = consultaConn.prepareStatement("SELECT * FROM consultas WHERE id_consulta = ?"); // Não sei se é assim
+            statement.setString(1, id_consulta);
             statement.execute();
             statement.close();
             return "Dados selecionados da tabela";
@@ -53,9 +53,9 @@ public class ConsultaDAO {
         try {
             PreparedStatement statement = consultaConn.prepareStatement("UPDATE consultas SET especialidade = ?, data_consulta = ?, canal_envio = ? WHERE id_consulta = ?");
             statement.setString(1, consulta.getEspecialidade());
-            statement.setObject(1, consulta.getData_consulta());
-            statement.setString(1, consulta.getCanal_envio());
-            statement.setInt(1, consulta.getId_consulta());
+            statement.setString(2, consulta.getData_consulta());
+            statement.setString(3, consulta.getCanal_envio());
+            statement.setInt(4, consulta.getId_consulta());
             statement.executeUpdate();
             statement.close();
             return "Dados atualizados na tabela";

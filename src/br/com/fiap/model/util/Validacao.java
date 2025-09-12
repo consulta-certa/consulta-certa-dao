@@ -8,7 +8,7 @@ public class Validacao {
             Integer.parseInt(entrada);
             return true;
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Operação cancelada. Inserir apenas números inteiros.");
+//            JOptionPane.showMessageDialog(null, "Operação cancelada. Inserir apenas números inteiros.");
             return false;
         }
     }
@@ -18,12 +18,13 @@ public class Validacao {
             Double.parseDouble(entrada);
             return true;
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Operação cancelada. Inserir apenas números reais.");
+//            JOptionPane.showMessageDialog(null, "Operação cancelada. Inserir apenas números reais.");
             return false;
         }
     }
 
     public static boolean validarString (String entrada) {
+//        JOptionPane.showMessageDialog(null, "Operação cancelada. Inserir apenas letras.");
         return entrada != null && entrada.matches("^[\\p{L}\\s]+$");
     }
 }
