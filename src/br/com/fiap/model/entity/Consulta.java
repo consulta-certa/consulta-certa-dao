@@ -1,16 +1,18 @@
 package br.com.fiap.model.entity;
 
+import java.time.LocalDateTime;
+
 public class Consulta {
     private int idConsulta;
     private String especialidade;
-    private String data_consulta;
+    private LocalDateTime data_consulta;
     private String status;
     private int id_paciente;
 
     public Consulta() {
     }
 
-    public Consulta(int idConsulta, String especialidade, String data_consulta, String status, int id_paciente) {
+    public Consulta(int idConsulta, String especialidade, LocalDateTime data_consulta, String status, int id_paciente) {
         this.idConsulta = idConsulta;
         this.especialidade = especialidade;
         this.data_consulta = data_consulta;
@@ -34,11 +36,11 @@ public class Consulta {
         this.especialidade = especialidade;
     }
 
-    public String getData_consulta() {
+    public LocalDateTime getData_consulta() {
         return data_consulta;
     }
 
-    public void setData_consulta(String data_consulta) {
+    public void setData_consulta(LocalDateTime data_consulta) {
         this.data_consulta = data_consulta;
     }
 

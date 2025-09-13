@@ -21,7 +21,7 @@ public class ConsultaDAO {
             PreparedStatement statement = consultaConn.prepareStatement("INSERT INTO consultas VALUES (?, ?, ?, ?, ?)");
             statement.setInt(1, consulta.getIdConsulta());
             statement.setString(2, consulta.getEspecialidade());
-            statement.setString(3, consulta.getData_consulta());
+            statement.setTimestamp(3, java.sql.Timestamp.valueOf(consulta.getData_consulta()));
             statement.setString(4, consulta.getStatus());
             statement.setInt(5, consulta.getId_paciente());
             statement.execute();
@@ -52,7 +52,7 @@ public class ConsultaDAO {
         try {
             PreparedStatement statement = consultaConn.prepareStatement("UPDATE consultas SET especialidade = ?, data_consulta = ?, status = ?, id_paciente = ? WHERE idConsulta = ?");
             statement.setString(1, consulta.getEspecialidade());
-            statement.setString(2, consulta.getData_consulta());
+            statement.setTimestamp(3, java.sql.Timestamp.valueOf(consulta.getData_consulta()));
             statement.setString(3, consulta.getStatus());
             statement.setInt(4, consulta.getId_paciente());
             statement.setInt(5, consulta.getIdConsulta());

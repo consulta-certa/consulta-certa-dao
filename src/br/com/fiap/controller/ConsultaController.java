@@ -5,9 +5,14 @@ import br.com.fiap.model.entity.Consulta;
 import br.com.fiap.model.util.Validacao;
 
 import javax.swing.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.ResolverStyle;
 
 public class ConsultaController {
     private final ConsultaDAO consultaDAO;
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu HH:mm").withResolverStyle(ResolverStyle.STRICT);
 
     public ConsultaController () {
         this.consultaDAO = new ConsultaDAO();
@@ -15,10 +20,11 @@ public class ConsultaController {
 
 /* EXECUÇÃO DAS OPERAÇÕES CRUD */
 //  Execução do CREATE
-    public void inserirConsulta(String idConsultaString, String especialidade, String dataConsulta, String status, String idPacienteString) {
+    public void inserirConsulta(String idConsultaString, String especialidade, String dataConsultaString, String status, String idPacienteString) {
         if (
             !Validacao.validarInteger(idConsultaString) ||
             !Validacao.validarString(especialidade) ||
+            !Validacao.validarData(dataConsultaString) ||
             !Validacao.validarString(status) ||
             !Validacao.validarInteger(idPacienteString)
         ) {
@@ -26,6 +32,7 @@ public class ConsultaController {
         }
 
         int idConsulta = Integer.parseInt(idConsultaString);
+        LocalDateTime dataConsulta = LocalDateTime.parse(dataConsultaString,formatter);
         int idPaciente = Integer.parseInt(idPacienteString);
 
         Consulta consulta = new Consulta();
@@ -49,9 +56,10 @@ public class ConsultaController {
     }
 
 // Execução do UPDATE
-    public void atualizarConsulta(String especialidade, String dataConsulta, String status, String idPacienteString, String idConsultaString) {
+    public void atualizarConsulta(String especialidade, String dataConsultaString, String status, String idPacienteString, String idConsultaString) {
         if (
             !Validacao.validarString(especialidade) ||
+            !Validacao.validarData(dataConsultaString) ||
             !Validacao.validarString(status) ||
             !Validacao.validarInteger(idPacienteString) ||
             !Validacao.validarInteger(idConsultaString)
@@ -60,6 +68,7 @@ public class ConsultaController {
         }
 
         int idConsulta = Integer.parseInt(idConsultaString);
+        LocalDateTime dataConsulta = LocalDateTime.parse(dataConsultaString,formatter);
         int idPaciente = Integer.parseInt(idPacienteString);
 
         Consulta consulta = new Consulta();
