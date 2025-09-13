@@ -30,8 +30,12 @@ public class Validacao {
     }
 
     public static boolean validarString (String entrada) {
-        JOptionPane.showMessageDialog(null, "Operação cancelada. Inserir apenas letras.");
-        return entrada != null && entrada.matches("^[\\p{L}\\s]+$");
+        if (entrada != null && entrada.matches("^[\\p{L}\\s]+$")) {
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(null, "Operação cancelada. Inserir apenas letras.");
+            return false;
+        }
     }
 
     public static boolean validarData(String entrada) {
@@ -46,6 +50,15 @@ public class Validacao {
             return true;
         } catch (DateTimeParseException e) {
             JOptionPane.showMessageDialog(null, "Operação cancelada. Inserir apenas no formato exato 'DD/MM/AAAA HH:MM'.");
+            return false;
+        }
+    }
+
+    public static boolean validarEmail(String entrada) {
+        if (entrada != null && entrada.matches("^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$")) {
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(null, "Operação cancelada. Inserir um email.");
             return false;
         }
     }

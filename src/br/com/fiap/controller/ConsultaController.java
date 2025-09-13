@@ -5,7 +5,6 @@ import br.com.fiap.model.entity.Consulta;
 import br.com.fiap.model.util.Validacao;
 
 import javax.swing.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.ResolverStyle;
