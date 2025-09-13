@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class ConsultaDAO {
-    public Connection consultaConn;
+    private final Connection consultaConn;
 
     public ConsultaDAO() {
         this.consultaConn = new ConnectionFactory().getConnection();
@@ -21,9 +21,9 @@ public class ConsultaDAO {
             PreparedStatement statement = consultaConn.prepareStatement("INSERT INTO consultas VALUES (?, ?, ?, ?, ?)");
             statement.setInt(1, consulta.getIdConsulta());
             statement.setString(2, consulta.getEspecialidade());
-            statement.setTimestamp(3, java.sql.Timestamp.valueOf(consulta.getData_consulta()));
+            statement.setTimestamp(3, java.sql.Timestamp.valueOf(consulta.getDataConsulta()));
             statement.setString(4, consulta.getStatus());
-            statement.setInt(5, consulta.getId_paciente());
+            statement.setInt(5, consulta.getIdPaciente());
             statement.execute();
             statement.close();
             return "Dados inseridos na tabela";
@@ -52,9 +52,9 @@ public class ConsultaDAO {
         try {
             PreparedStatement statement = consultaConn.prepareStatement("UPDATE consultas SET especialidade = ?, data_consulta = ?, status = ?, id_paciente = ? WHERE idConsulta = ?");
             statement.setString(1, consulta.getEspecialidade());
-            statement.setTimestamp(3, java.sql.Timestamp.valueOf(consulta.getData_consulta()));
+            statement.setTimestamp(3, java.sql.Timestamp.valueOf(consulta.getDataConsulta()));
             statement.setString(3, consulta.getStatus());
-            statement.setInt(4, consulta.getId_paciente());
+            statement.setInt(4, consulta.getIdPaciente());
             statement.setInt(5, consulta.getIdConsulta());
             statement.executeUpdate();
             statement.close();

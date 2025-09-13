@@ -8,7 +8,7 @@ import javax.swing.*;
 import java.time.LocalDateTime;
 
 public class PacienteController {
-    private PacienteDAO pacienteDAO;
+    private final PacienteDAO pacienteDAO;
 
     public PacienteController() {
         this.pacienteDAO = new PacienteDAO();
@@ -37,6 +37,7 @@ public class PacienteController {
         JOptionPane.showMessageDialog(null, pacienteDAO.inserir(paciente));
     }
 
+    // Execução do READ
     public void selecionarPaciente() {
 
     }
@@ -74,3 +75,51 @@ public class PacienteController {
         JOptionPane.showMessageDialog(null, pacienteDAO.deletar(idPaciente));
     }
 }
+
+/*
+    //  Execução do CREATE
+    public void inserirClasse(String idClasseString, String atributos) {
+        if (
+            !Validacao.validarInteger(idClasseString) ||
+            !Validacao.validarString(atributos)
+        ) {
+            return;
+        }
+
+        int idClasse = Integer.parseInt(idClasseString);
+
+        // Instancia
+
+        JOptionPane.showMessageDialog(null, dao.inserir(instancia));
+    }
+
+    // Execução do READ
+    public void selecionarClasse() {
+    }
+
+    // Execução do UPDATE
+    public void atualizarClasse(String atributos, String idClasseString) {
+        if (
+            !Validacao.validarString(atributos) ||
+            !Validacao.validarInteger(idClasseString)
+        ) {
+            return;
+        }
+
+        int idPaciente = Integer.parseInt(idClasseString);
+
+        // Instancia
+
+        JOptionPane.showMessageDialog(null, dao.atualizar(instancia));
+    }
+
+    // Execução do DELETE
+    public void deletarClasse(String idClasseString) {
+        if (!Validacao.validarInteger(idClasseString)) {
+            return;
+        }
+
+        int idClasse = Integer.parseInt(idClasseString);
+        JOptionPane.showMessageDialog(null, dao.deletar(idClasse));
+    }
+*/

@@ -37,9 +37,9 @@ public class ConsultaController {
         Consulta consulta = new Consulta();
         consulta.setIdConsulta(idConsulta);
         consulta.setEspecialidade(especialidade);
-        consulta.setData_consulta(dataConsulta);
+        consulta.setDataConsulta(dataConsulta);
         consulta.setStatus(status);
-        consulta.setId_paciente(idPaciente);
+        consulta.setIdPaciente(idPaciente);
 
         JOptionPane.showMessageDialog(null, consultaDAO.inserir(consulta));
     }
@@ -72,9 +72,9 @@ public class ConsultaController {
 
         Consulta consulta = new Consulta();
         consulta.setEspecialidade(especialidade);
-        consulta.setData_consulta(dataConsulta);
+        consulta.setDataConsulta(dataConsulta);
         consulta.setStatus(status);
-        consulta.setId_paciente(idPaciente);
+        consulta.setIdPaciente(idPaciente);
         consulta.setIdConsulta(idConsulta);
 
         JOptionPane.showMessageDialog(null, consultaDAO.atualizar(consulta));

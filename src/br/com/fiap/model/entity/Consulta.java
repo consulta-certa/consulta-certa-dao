@@ -5,19 +5,19 @@ import java.time.LocalDateTime;
 public class Consulta {
     private int idConsulta;
     private String especialidade;
-    private LocalDateTime data_consulta;
+    private LocalDateTime dataConsulta;
     private String status;
-    private int id_paciente;
+    private int idPaciente;
 
     public Consulta() {
     }
 
-    public Consulta(int idConsulta, String especialidade, LocalDateTime data_consulta, String status, int id_paciente) {
+    public Consulta(int idConsulta, String especialidade, LocalDateTime dataConsulta, String status, int id_paciente) {
         this.idConsulta = idConsulta;
         this.especialidade = especialidade;
-        this.data_consulta = data_consulta;
+        this.dataConsulta = dataConsulta;
         this.status = status;
-        this.id_paciente = id_paciente;
+        this.idPaciente = idPaciente;
     }
 
     public int getIdConsulta() {
@@ -36,12 +36,12 @@ public class Consulta {
         this.especialidade = especialidade;
     }
 
-    public LocalDateTime getData_consulta() {
-        return data_consulta;
+    public LocalDateTime getDataConsulta() {
+        return dataConsulta;
     }
 
-    public void setData_consulta(LocalDateTime data_consulta) {
-        this.data_consulta = data_consulta;
+    public void setDataConsulta(LocalDateTime dataConsulta) {
+        this.dataConsulta = dataConsulta;
     }
 
     public String getStatus() {
@@ -52,11 +52,11 @@ public class Consulta {
         this.status = status;
     }
 
-    public int getId_paciente() {
-        return id_paciente;
+    public int getIdPaciente() {
+        return idPaciente;
     }
 
-    public void setId_paciente(int id_paciente) {
-        this.id_paciente = id_paciente;
+    public void setIdPaciente(int idPaciente) {
+        this.idPaciente = idPaciente;
     }
 }

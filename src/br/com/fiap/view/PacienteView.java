@@ -5,7 +5,7 @@ import br.com.fiap.controller.PacienteController;
 import javax.swing.*;
 
 public class PacienteView {
-    private PacienteController controller;
+    private final PacienteController controller;
 
     public PacienteView () {
         this.controller = new PacienteController();
@@ -41,3 +41,27 @@ public class PacienteView {
         controller.deletarPaciente(idPaciente);
     }
 }
+
+/*
+    private void coletarInsercao () {
+        String idClasse = JOptionPane.showInputDialog("Informe o id do novo instancia");
+        String atributos = JOptionPane.showInputDialog("Informe o atributo do novo instancia");
+        controller.inserirClasse(idClasse, atributos);
+    }
+
+    private void coletarSelecao () {
+        String idClasse = JOptionPane.showInputDialog("Informe o id do novo instancia");
+        controller.selecionarClasse();
+    }
+
+    private void coletarAtualizacao () {
+        String atributos = JOptionPane.showInputDialog("Informe o atributos do novo instancia");
+        String idClasse = JOptionPane.showInputDialog("Informe o id do novo instancia");
+        controller.atualizarClasse(atributos, idClasse);
+    }
+
+    private void coletarRemocao () {
+        String idClasse = JOptionPane.showInputDialog("Informe o id do novo instancia");
+        controller.deletarClasse(idClasse);
+    }
+*/
