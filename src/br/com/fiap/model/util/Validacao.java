@@ -1,8 +1,6 @@
 package br.com.fiap.model.util;
 
 import javax.swing.*;
-import java.time.DateTimeException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -29,7 +27,7 @@ public class Validacao {
         }
     }
 
-    public static boolean validarString (String entrada) {
+    public static boolean validarNome (String entrada) {
         if (entrada != null && entrada.matches("^[\\p{L}\\s]+$")) {
             return true;
         } else {
@@ -56,6 +54,24 @@ public class Validacao {
 
     public static boolean validarEmail(String entrada) {
         if (entrada != null && entrada.matches("^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$")) {
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(null, "Operação cancelada. Inserir um email.");
+            return false;
+        }
+    }
+    
+    public static boolean validarCep(String entrada) {
+        if (entrada != null && entrada.matches("(^[0-9]{5})-?([0-9]{3}$)")) {
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(null, "Operação cancelada. Inserir um email.");
+            return false;
+        }
+    }
+    
+    public static boolean validarTelefone(String entrada) {
+        if (entrada != null && entrada.matches("(^[0-9]{2})?(\\s|-)?(9?[0-9]{4})-?([0-9]{4}$)")) {
             return true;
         } else {
             JOptionPane.showMessageDialog(null, "Operação cancelada. Inserir um email.");

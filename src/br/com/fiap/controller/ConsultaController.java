@@ -22,9 +22,9 @@ public class ConsultaController {
     public void inserirConsulta(String idConsultaString, String especialidade, String dataConsultaString, String status, String idPacienteString) {
         if (
             !Validacao.validarInteger(idConsultaString) ||
-            !Validacao.validarString(especialidade) ||
+            !Validacao.validarNome(especialidade) ||
             !Validacao.validarData(dataConsultaString) ||
-            !Validacao.validarString(status) ||
+            !Validacao.validarNome(status) ||
             !Validacao.validarInteger(idPacienteString)
         ) {
             return;
@@ -57,9 +57,9 @@ public class ConsultaController {
 // Execução do UPDATE
     public void atualizarConsulta(String especialidade, String dataConsultaString, String status, String idPacienteString, String idConsultaString) {
         if (
-            !Validacao.validarString(especialidade) ||
+            !Validacao.validarNome(especialidade) ||
             !Validacao.validarData(dataConsultaString) ||
-            !Validacao.validarString(status) ||
+            !Validacao.validarNome(status) ||
             !Validacao.validarInteger(idPacienteString) ||
             !Validacao.validarInteger(idConsultaString)
         ) {

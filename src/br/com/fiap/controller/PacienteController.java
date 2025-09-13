@@ -18,7 +18,7 @@ public class PacienteController {
     public void inserirPaciente(String idPacienteString, String nome, String email, String telefoneString) {
         if (
             !Validacao.validarInteger(idPacienteString) ||
-            !Validacao.validarString(nome) ||
+            !Validacao.validarNome(nome) ||
             !Validacao.validarEmail(email) ||
             !Validacao.validarInteger(telefoneString)
         ) {
@@ -45,7 +45,7 @@ public class PacienteController {
     // Execução do UPDATE
     public void atualizarPaciente(String nome, String email, String telefoneString, String idPacienteString) {
         if (
-            !Validacao.validarString(nome) ||
+            !Validacao.validarNome(nome) ||
             !Validacao.validarEmail(email) ||
             !Validacao.validarInteger(telefoneString) ||
             !Validacao.validarInteger(idPacienteString)
@@ -81,7 +81,7 @@ public class PacienteController {
     public void inserirClasse(String idClasseString, String atributos) {
         if (
             !Validacao.validarInteger(idClasseString) ||
-            !Validacao.validarString(atributos)
+            !Validacao.validarNome(atributos)
         ) {
             return;
         }
@@ -100,7 +100,7 @@ public class PacienteController {
     // Execução do UPDATE
     public void atualizarClasse(String atributos, String idClasseString) {
         if (
-            !Validacao.validarString(atributos) ||
+            !Validacao.validarNome(atributos) ||
             !Validacao.validarInteger(idClasseString)
         ) {
             return;
