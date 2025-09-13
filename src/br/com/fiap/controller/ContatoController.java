@@ -14,12 +14,16 @@ public class ContatoController {
     }
 
     //  Execução do CREATE
-    public void inserirContato(String idContatoString, String telefone, String email, String numero, String rua, String bairro, String cidade, String cep) {
+    public void inserirContato(String idContatoString, String nome, String telefone, String email, String numero, String rua, String bairro, String cidade, String cep) {
         if (
-            !Validacao.validarInteger(idContatoString) ||
+            !Validacao.validarNome(nome) ||
+            !Validacao.validarTelefone(telefone) ||
+            !Validacao.validarEmail(email) ||
             !Validacao.validarNome(rua) ||
             !Validacao.validarNome(bairro) ||
-            !Validacao.validarNome(cidade)
+            !Validacao.validarNome(cidade) ||
+            !Validacao.validarCep(cep) ||
+            !Validacao.validarInteger(idContatoString)
         ) {
             return;
         }
@@ -28,6 +32,7 @@ public class ContatoController {
 
         Contato contato = new Contato();
         contato.setIdContato(idContato);
+        contato.setNome(nome);
         contato.setTelefone(telefone);
         contato.setEmail(email);
         contato.setNumero(numero);
@@ -44,8 +49,9 @@ public class ContatoController {
     }
 
     // Execução do UPDATE
-    public void atualizarContato(String idContatoString, String telefone, String email, String numero, String rua, String bairro, String cidade, String cep) {
+    public void atualizarContato(String idContatoString, String nome, String telefone, String email, String numero, String rua, String bairro, String cidade, String cep) {
         if (
+            !Validacao.validarNome(nome) ||
             !Validacao.validarTelefone(telefone) ||
             !Validacao.validarEmail(email) ||
             !Validacao.validarNome(rua) ||
@@ -61,6 +67,7 @@ public class ContatoController {
 
         Contato contato = new Contato();
         contato.setIdContato(idContato);
+        contato.setNome(nome);
         contato.setTelefone(telefone);
         contato.setEmail(email);
         contato.setNumero(numero);

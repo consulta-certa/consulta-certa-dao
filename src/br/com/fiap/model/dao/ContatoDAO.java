@@ -17,15 +17,16 @@ public class ContatoDAO {
     //  CREATE
     public String inserir(Contato contato) {
         try {
-            PreparedStatement statement = contatoConn.prepareStatement("INSERT INTO contatos VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            PreparedStatement statement = contatoConn.prepareStatement("INSERT INTO contatos VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
             statement.setInt(1, contato.getIdContato());
-            statement.setString(2, contato.getTelefone());
-            statement.setString(3, contato.getEmail());
-            statement.setString(4, contato.getNumero());
-            statement.setString(5, contato.getRua());
-            statement.setString(6, contato.getBairro());
-            statement.setString(7, contato.getCidade());
-            statement.setString(8, contato.getCep());
+            statement.setString(2, contato.getNome());
+            statement.setString(3, contato.getTelefone());
+            statement.setString(4, contato.getEmail());
+            statement.setString(5, contato.getNumero());
+            statement.setString(6, contato.getRua());
+            statement.setString(7, contato.getBairro());
+            statement.setString(8, contato.getCidade());
+            statement.setString(9, contato.getCep());
             statement.execute();
             statement.close();
             return "Dados inseridos na tabela";
@@ -42,15 +43,16 @@ public class ContatoDAO {
     //  UPDATE
     public String atualizar(Contato contato) {
         try {
-            PreparedStatement statement = contatoConn.prepareStatement("UPDATE contatos SET telefone = ?, email = ?, numero = ?, rua = ?, bairro = ?, cidade = ?, cep = ? WHERE id_contato = ?");
-            statement.setString(1, contato.getTelefone());
-            statement.setString(2, contato.getEmail());
-            statement.setString(3, contato.getNumero());
-            statement.setString(4, contato.getRua());
-            statement.setString(5, contato.getBairro());
-            statement.setString(6, contato.getCidade());
-            statement.setString(7, contato.getCep());
-            statement.setInt(8, contato.getIdContato());
+            PreparedStatement statement = contatoConn.prepareStatement("UPDATE contatos SET nome = ?, telefone = ?, email = ?, numero = ?, rua = ?, bairro = ?, cidade = ?, cep = ? WHERE id_contato = ?");
+            statement.setString(1, contato.getNome());
+            statement.setString(2, contato.getTelefone());
+            statement.setString(3, contato.getEmail());
+            statement.setString(4, contato.getNumero());
+            statement.setString(5, contato.getRua());
+            statement.setString(6, contato.getBairro());
+            statement.setString(7, contato.getCidade());
+            statement.setString(8, contato.getCep());
+            statement.setInt(9, contato.getIdContato());
             statement.executeUpdate();
             statement.close();
             return "Dados atualizados na tabela";

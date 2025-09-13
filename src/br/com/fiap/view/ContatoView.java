@@ -17,6 +17,7 @@ public class ContatoView {
 
     private void coletarInsercao () {
         String idContato = JOptionPane.showInputDialog("Informe o id do novo contato");
+        String nome = JOptionPane.showInputDialog("Informe o nome do novo contato");
         String telefone = JOptionPane.showInputDialog("Informe o telefone do novo contato");
         String email = JOptionPane.showInputDialog("Informe o email do novo contato");
         String numero = JOptionPane.showInputDialog("Informe o número do novo contato");
@@ -24,7 +25,7 @@ public class ContatoView {
         String bairro = JOptionPane.showInputDialog("Informe o bairro do novo contato");
         String cidade = JOptionPane.showInputDialog("Informe a cidade do novo contato");
         String cep = JOptionPane.showInputDialog("Informe o CEP do novo contato (apenas os números)");
-        controller.inserirContato(idContato, telefone, email, numero, rua, bairro, cidade, cep);
+        controller.inserirContato(idContato, nome, telefone, email, numero, rua, bairro, cidade, cep);
     }
 
     private void coletarSelecao () {
@@ -33,6 +34,7 @@ public class ContatoView {
     }
 
     private void coletarAtualizacao () {
+        String nome = JOptionPane.showInputDialog("Informe o nome do novo contato");
         String telefone = JOptionPane.showInputDialog("Informe o telefone do novo contato");
         String email = JOptionPane.showInputDialog("Informe o email do novo contato");
         String numero = JOptionPane.showInputDialog("Informe o número do novo contato");
@@ -41,7 +43,7 @@ public class ContatoView {
         String cidade = JOptionPane.showInputDialog("Informe a cidade do novo contato");
         String cep = JOptionPane.showInputDialog("Informe o CEP do novo contato (apenas os números)");
         String idContato = JOptionPane.showInputDialog("Informe o id do novo contato");
-        controller.atualizarContato(telefone, email, numero, rua, bairro, cidade, cep, idContato);
+        controller.atualizarContato(nome, telefone, email, numero, rua, bairro, cidade, cep, idContato);
     }
 
     private void coletarRemocao () {

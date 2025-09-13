@@ -2,6 +2,7 @@ package br.com.fiap.model.entity;
 
 public class Contato {
     private int idContato;
+    private String nome;
     private String telefone;
     private String email;
     private String numero;
@@ -13,8 +14,9 @@ public class Contato {
     public Contato() {
     }
 
-    public Contato(int idContato, String telefone, String email, String numero, String rua, String bairro, String cidade, String cep) {
+    public Contato(int idContato, String nome, String telefone, String email, String numero, String rua, String bairro, String cidade, String cep) {
         this.idContato = idContato;
+        this.nome = nome;
         this.telefone = telefone;
         this.email = email;
         this.numero = numero;
@@ -30,6 +32,14 @@ public class Contato {
 
     public void setIdContato(int idContato) {
         this.idContato = idContato;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getTelefone() {
