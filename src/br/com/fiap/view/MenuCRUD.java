@@ -10,7 +10,7 @@ public class MenuCRUD {
         int opcaoSelecionada = 0;
 
         do {
-            opcao = JOptionPane.showInputDialog(null, "Escolha um número entre 1 e 5:\n1. Inserir dados na tabela\n2. Selecionar dados da tabela\n3. Atualizar dados da tabela\n4. Excluir dados da tabela\n5. Voltar ao menu", "MENU", JOptionPane.QUESTION_MESSAGE);
+            opcao = JOptionPane.showInputDialog(null, "Escolha um número entre 1 e 5:\n1. Inserir dados na tabela\n2. Selecionar dados da tabela\n3. Atualizar dados da tabela\n4. Excluir dados da tabela\n5. Voltar ao menu", "OPERAÇÕES CRUD", JOptionPane.QUESTION_MESSAGE);
 
             if (Validacao.validarInteger(opcao)) {
                 opcaoSelecionada = Integer.parseInt(opcao);
@@ -34,12 +34,12 @@ public class MenuCRUD {
                             opcaoSelecionada = 0;
                             break;
                         default:
-                            JOptionPane.showMessageDialog(null, "Encerrando");
+                            JOptionPane.showMessageDialog(null, "Voltando ao menu");
                     }
                 }
 
             } else {
-                JOptionPane.showMessageDialog(null, "Escolha apenas um número inteiro entre 1 e 4.");
+                JOptionPane.showMessageDialog(null, "Escolha apenas um número inteiro entre 1 e 5.");
             }
         } while (opcaoSelecionada < 1 || opcaoSelecionada > 5);
     }

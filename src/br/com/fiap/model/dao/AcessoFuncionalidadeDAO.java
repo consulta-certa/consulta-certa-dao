@@ -17,7 +17,7 @@ public class AcessoFuncionalidadeDAO {
     // CREATE
     public String inserir(AcessoFuncionalidade acesso) {
         try {
-            PreparedStatement statement = conn.prepareStatement("INSERT INTO acesso_funcionalidade VALUES (?, ?, ?, ?)");
+            PreparedStatement statement = conn.prepareStatement("INSERT INTO acessos_funcionalidade VALUES (?, ?, ?, ?)");
             statement.setInt(1, acesso.getIdAcesso());
             statement.setString(2, acesso.getFuncionalidade());
             statement.setInt(3, acesso.getQuantidadeAcessos());
@@ -33,7 +33,7 @@ public class AcessoFuncionalidadeDAO {
     // READ
     public String selecionar(int idAcesso) {
         try {
-            PreparedStatement statement = conn.prepareStatement("SELECT * FROM acesso_funcionalidade WHERE idAcesso = ?");
+            PreparedStatement statement = conn.prepareStatement("SELECT * FROM acessos_funcionalidade WHERE idAcesso = ?");
             statement.setInt(1, idAcesso);
             statement.execute();
             statement.close();
@@ -46,7 +46,7 @@ public class AcessoFuncionalidadeDAO {
     // UPDATE
     public String atualizar(AcessoFuncionalidade acesso) {
         try {
-            PreparedStatement statement = conn.prepareStatement("UPDATE acesso_funcionalidade SET funcionalidade = ?, quantidade_acessos = ?, tempo_permanencia_seg = ? WHERE idAcesso = ?");
+            PreparedStatement statement = conn.prepareStatement("UPDATE acessos_funcionalidade SET funcionalidade = ?, quantidade_acessos = ?, tempo_permanencia_seg = ? WHERE idAcesso = ?");
             statement.setString(1, acesso.getFuncionalidade());
             statement.setInt(2, acesso.getQuantidadeAcessos());
             statement.setInt(3, acesso.getTempoPermanenciaSeg());
@@ -62,7 +62,7 @@ public class AcessoFuncionalidadeDAO {
     // DELETE
     public String deletar(int idAcesso) {
         try {
-            PreparedStatement statement = conn.prepareStatement("DELETE FROM acesso_funcionalidade WHERE idAcesso = ?");
+            PreparedStatement statement = conn.prepareStatement("DELETE FROM acessos_funcionalidade WHERE idAcesso = ?");
             statement.setInt(1, idAcesso);
             statement.execute();
             statement.close();
