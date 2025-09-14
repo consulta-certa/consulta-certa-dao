@@ -16,29 +16,29 @@ public class ConsultaView {
     }
 
     private void coletarInsercao () {
-        String idConsulta = JOptionPane.showInputDialog("Informe o id da nova consulta");
-        String especialidade = JOptionPane.showInputDialog("Informe a especialidade da nova consulta");
-        String dataConsulta = JOptionPane.showInputDialog("Informe a data da nova consulta no padrão DD/MM/AAAA");
-        String status = JOptionPane.showInputDialog("Informe status da nova consulta (A para ativa e I para inativa)");
-        String idPaciente = JOptionPane.showInputDialog("Informe o id do paciente da nova consulta");
+        String idConsulta = JOptionPane.showInputDialog("Informe o id da consulta");
+        String especialidade = JOptionPane.showInputDialog("Informe a especialidade da consulta");
+        String dataConsulta = JOptionPane.showInputDialog("Informe a data da consulta no padrão DD/MM/AAAA HH:MM");
+        String status = JOptionPane.showInputDialog("Informe status da consulta (A para ativa e I para inativa)");
+        String idPaciente = JOptionPane.showInputDialog("Informe o id do paciente associado");
         controller.inserirConsulta(idConsulta, especialidade, dataConsulta, status, idPaciente);
     }
 
     private void coletarSelecao () {
-        String idConsulta = JOptionPane.showInputDialog("Informe o id da nova consulta");
+        String idConsulta = JOptionPane.showInputDialog("Informe o id da consulta");
         controller.lerConsulta(idConsulta);    }
 
     private void coletarAtualizacao () {
-        String especialidade = JOptionPane.showInputDialog("Informe a especialidade da nova consulta");
-        String dataConsulta = JOptionPane.showInputDialog("Informe a data da nova consulta no padrão DD/MM/AAAA");
-        String status = JOptionPane.showInputDialog("Informe status da nova consulta (A para ativa e I para inativa)");
-        String idPaciente = JOptionPane.showInputDialog("Informe o id do paciente da nova consulta");
-        String idConsulta = JOptionPane.showInputDialog("Informe o id da nova consulta");
+        String especialidade = JOptionPane.showInputDialog("Informe a especialidade da consulta");
+        String dataConsulta = JOptionPane.showInputDialog("Informe a data da consulta no padrão DD/MM/AAAA HH:MM");
+        String status = JOptionPane.showInputDialog("Informe status da consulta (A para ativa e I para inativa)");
+        String idPaciente = JOptionPane.showInputDialog("Informe o id do paciente associado");
+        String idConsulta = JOptionPane.showInputDialog("Informe o id da consulta");
         controller.atualizarConsulta(especialidade, dataConsulta, status, idPaciente, idConsulta);
     }
 
     private void coletarRemocao () {
-        String idConsulta = JOptionPane.showInputDialog("Informe o id da nova consulta");
+        String idConsulta = JOptionPane.showInputDialog("Informe o id da consulta");
         controller.deletarConsulta(idConsulta);
     }
 }

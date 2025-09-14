@@ -2,6 +2,7 @@ package br.com.fiap.controller;
 
 import br.com.fiap.model.dao.ConsultaDAO;
 import br.com.fiap.model.entity.Consulta;
+import br.com.fiap.model.util.DataFormatter;
 import br.com.fiap.model.util.Validacao;
 
 import javax.swing.*;
@@ -11,7 +12,6 @@ import java.time.format.ResolverStyle;
 
 public class ConsultaController {
     private final ConsultaDAO consultaDAO;
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu HH:mm").withResolverStyle(ResolverStyle.STRICT);
 
     public ConsultaController () {
         this.consultaDAO = new ConsultaDAO();
@@ -31,7 +31,7 @@ public class ConsultaController {
         }
 
         int idConsulta = Integer.parseInt(idConsultaString);
-        LocalDateTime dataConsulta = LocalDateTime.parse(dataConsultaString,formatter);
+        LocalDateTime dataConsulta = LocalDateTime.parse(dataConsultaString, DataFormatter.formatter);
         int idPaciente = Integer.parseInt(idPacienteString);
 
         Consulta consulta = new Consulta();
@@ -67,7 +67,7 @@ public class ConsultaController {
         }
 
         int idConsulta = Integer.parseInt(idConsultaString);
-        LocalDateTime dataConsulta = LocalDateTime.parse(dataConsultaString,formatter);
+        LocalDateTime dataConsulta = LocalDateTime.parse(dataConsultaString, DataFormatter.formatter);
         int idPaciente = Integer.parseInt(idPacienteString);
 
         Consulta consulta = new Consulta();
