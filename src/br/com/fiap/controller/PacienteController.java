@@ -39,7 +39,6 @@ public class PacienteController {
 
     // Execução do READ
     public void selecionarPaciente() {
-
     }
 
     // Execução do UPDATE

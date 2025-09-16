@@ -17,16 +17,6 @@ public class Validacao {
         }
     }
 
-    public static boolean validarDouble (String entrada) {
-        try {
-            Double.parseDouble(entrada);
-            return true;
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Operação cancelada. Inserir apenas números reais.");
-            return false;
-        }
-    }
-
     public static boolean validarNome (String entrada) {
         if (entrada != null && entrada.matches("^[\\p{L}\\s]+$")) {
             return true;

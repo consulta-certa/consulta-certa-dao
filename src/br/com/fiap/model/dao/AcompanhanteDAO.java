@@ -33,10 +33,9 @@ public class AcompanhanteDAO {
     }
 
     // READ
-    public Acompanhante selecionar(int idAcompanhante) {
+    public Acompanhante selecionar() {
         try {
-            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM acompanhantes WHERE idAcompanhante = ?");
-            stmt.setInt(1, idAcompanhante);
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM acompanhantes");
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 Acompanhante acompanhante = new Acompanhante();

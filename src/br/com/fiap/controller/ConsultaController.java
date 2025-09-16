@@ -45,13 +45,8 @@ public class ConsultaController {
     }
 
 // Execução do READ
-    public void lerConsulta(String idConsultaString) {
-        if (!Validacao.validarInteger(idConsultaString)) {
-            return;
-        }
-
-        int idConsulta = Integer.parseInt(idConsultaString);
-        JOptionPane.showMessageDialog(null, consultaDAO.selecionar(idConsulta));
+    public void lerConsulta() {
+        JOptionPane.showMessageDialog(null, consultaDAO.selecionar());
     }
 
 // Execução do UPDATE

@@ -29,7 +29,6 @@ public class ContatoView {
     }
 
     private void coletarSelecao () {
-        String idContato = JOptionPane.showInputDialog("Informe o id do contato");
         controller.selecionarContato();
     }
 

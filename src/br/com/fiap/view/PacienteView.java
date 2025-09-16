@@ -24,7 +24,6 @@ public class PacienteView {
     }
 
     private void coletarSelecao () {
-        String idPaciente = JOptionPane.showInputDialog("Informe o id do paciente");
         controller.selecionarPaciente();
     }
 

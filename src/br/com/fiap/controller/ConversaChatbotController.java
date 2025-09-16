@@ -30,13 +30,8 @@ public class ConversaChatbotController {
     }
 
     // READ
-    public void lerConversaChatbot(String idConversaString) {
-        if (!Validacao.validarInteger(idConversaString)) {
-            return;
-        }
-
-        int idConversa = Integer.parseInt(idConversaString);
-        JOptionPane.showMessageDialog(null, dao.selecionar(idConversa));
+    public void lerConversaChatbot() {
+        JOptionPane.showMessageDialog(null, dao.selecionar());
     }
 
     // UPDATE

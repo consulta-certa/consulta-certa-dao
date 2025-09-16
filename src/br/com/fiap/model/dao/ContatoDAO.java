@@ -36,7 +36,7 @@ public class ContatoDAO {
         }
     }
 
-    public String selecionar(int idContato) {
+    public String selecionar() {
         return "E";
     }
 

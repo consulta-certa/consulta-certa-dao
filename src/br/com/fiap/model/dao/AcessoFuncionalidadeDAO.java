@@ -31,10 +31,9 @@ public class AcessoFuncionalidadeDAO {
     }
 
     // READ
-    public String selecionar(int idAcesso) {
+    public String selecionar() {
         try {
-            PreparedStatement statement = conn.prepareStatement("SELECT * FROM acessos_funcionalidade WHERE idAcesso = ?");
-            statement.setInt(1, idAcesso);
+            PreparedStatement statement = conn.prepareStatement("SELECT * FROM acessos_funcionalidade");
             statement.execute();
             statement.close();
             return "Dados selecionados da tabela";

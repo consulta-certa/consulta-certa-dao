@@ -36,10 +36,9 @@ public class ConteudoDAO {
     }
 
     // READ
-    public Conteudo selecionar(int idConteudo) {
+    public Conteudo selecionar() {
         try {
-            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM conteudos WHERE idConteudo = ?");
-            stmt.setInt(1, idConteudo);
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM conteudos");
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 Conteudo conteudo = new Conteudo();

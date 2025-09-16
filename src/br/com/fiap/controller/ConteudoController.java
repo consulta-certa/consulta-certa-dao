@@ -37,18 +37,8 @@ public class ConteudoController {
     }
 
     // READ
-    public void lerConteudo(String idConteudoString) {
-        if (!Validacao.validarInteger(idConteudoString)) {
-            return;
-        }
-
-        int idConteudo = Integer.parseInt(idConteudoString);
-        Conteudo conteudo = dao.selecionar(idConteudo);
-        if (conteudo != null) {
-            JOptionPane.showMessageDialog(null, "Conteúdo encontrado: " + conteudo.getTitulo());
-        } else {
-            JOptionPane.showMessageDialog(null, "Conteúdo não encontrado");
-        }
+    public void lerConteudo() {
+        JOptionPane.showMessageDialog(null, "Conteúdo não encontrado");
     }
 
     // UPDATE

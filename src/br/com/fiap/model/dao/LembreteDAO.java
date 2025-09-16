@@ -33,10 +33,9 @@ public class LembreteDAO {
     }
 
     // READ
-    public Lembrete selecionar(int idLembrete) {
+    public Lembrete selecionar() {
         try {
-            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM lembretes WHERE idLembrete = ?");
-            stmt.setInt(1, idLembrete);
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM lembretes");
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 Lembrete lembrete = new Lembrete();

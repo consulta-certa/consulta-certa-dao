@@ -23,8 +23,7 @@ public class ConversaChatbotView {
     }
 
     private void coletarSelecao() {
-        String idConversa = JOptionPane.showInputDialog("Informe o id da conversa");
-        controller.lerConversaChatbot(idConversa);
+        controller.lerConversaChatbot();
     }
 
     private void coletarAtualizacao() {

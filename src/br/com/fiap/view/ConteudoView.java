@@ -27,8 +27,7 @@ public class ConteudoView {
     }
 
     private void coletarSelecao() {
-        String idConteudo = JOptionPane.showInputDialog("Informe o id do conteúdo");
-        controller.lerConteudo(idConteudo);
+        controller.lerConteudo();
     }
 
     private void coletarAtualizacao() {

@@ -38,13 +38,8 @@ public class AvaliacaoController {
     }
 
     // READ
-    public void lerAvaliacao(String idAvaliacaoString) {
-        if (!Validacao.validarInteger(idAvaliacaoString)) {
-            return;
-        }
-
-        int idAvaliacao = Integer.parseInt(idAvaliacaoString);
-        JOptionPane.showMessageDialog(null, dao.selecionar(idAvaliacao));
+    public void lerAvaliacao() {
+        JOptionPane.showMessageDialog(null, dao.selecionar());
     }
 
     // UPDATE

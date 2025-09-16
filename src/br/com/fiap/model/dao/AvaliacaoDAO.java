@@ -32,10 +32,9 @@ public class AvaliacaoDAO {
     }
 
     // READ
-    public String selecionar(int idAvaliacao) {
+    public String selecionar() {
         try {
-            PreparedStatement statement = conn.prepareStatement("SELECT * FROM avaliacoes WHERE idAvaliacao = ?");
-            statement.setInt(1, idAvaliacao);
+            PreparedStatement statement = conn.prepareStatement("SELECT * FROM avaliacoes");
             statement.execute();
             statement.close();
             return "Dados selecionados da tabela";

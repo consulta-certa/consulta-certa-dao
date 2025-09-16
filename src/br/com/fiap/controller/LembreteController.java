@@ -31,18 +31,8 @@ public class LembreteController {
     }
 
     // READ
-    public void lerLembrete(String idLembreteString) {
-        if (!Validacao.validarInteger(idLembreteString)) {
-            return;
-        }
-
-        int idLembrete = Integer.parseInt(idLembreteString);
-        Lembrete lembrete = dao.selecionar(idLembrete);
-        if (lembrete != null) {
-            JOptionPane.showMessageDialog(null, "Lembrete encontrado: " + lembrete.getCanalEnvio());
-        } else {
-            JOptionPane.showMessageDialog(null, "Lembrete não encontrado");
-        }
+    public void lerLembrete() {
+        JOptionPane.showMessageDialog(null, "Lembrete não encontrado");
     }
 
     // UPDATE

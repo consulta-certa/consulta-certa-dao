@@ -26,8 +26,7 @@ public class AvaliacaoView {
     }
 
     private void coletarSelecao() {
-        String idAvaliacao = JOptionPane.showInputDialog("Informe o id da avaliação");
-        controller.lerAvaliacao(idAvaliacao);
+        controller.lerAvaliacao();
     }
 
     private void coletarAtualizacao() {

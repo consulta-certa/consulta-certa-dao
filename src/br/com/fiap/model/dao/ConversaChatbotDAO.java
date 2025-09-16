@@ -30,10 +30,9 @@ public class ConversaChatbotDAO {
     }
 
     // READ
-    public String selecionar(int idConversa) {
+    public String selecionar() {
         try {
-            PreparedStatement statement = conn.prepareStatement("SELECT * FROM conversas_chatbot WHERE idConversa = ?");
-            statement.setInt(1, idConversa);
+            PreparedStatement statement = conn.prepareStatement("SELECT * FROM conversas_chatbot");
             statement.execute();
             statement.close();
             return "Dados selecionados da tabela";

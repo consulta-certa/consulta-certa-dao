@@ -31,7 +31,7 @@ public class PacienteDAO {
         }
     }
 
-    public String selecionar(int idPaciente) {
+    public String selecionar() {
         return "E";
     }
 

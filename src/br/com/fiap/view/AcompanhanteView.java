@@ -25,8 +25,7 @@ public class AcompanhanteView {
     }
 
     private void coletarSelecao() {
-        String idAcompanhante = JOptionPane.showInputDialog("Informe o id do acompanhante");
-        controller.lerAcompanhante(idAcompanhante);
+        controller.lerAcompanhante();
     }
 
     private void coletarAtualizacao() {

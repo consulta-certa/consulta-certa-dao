@@ -24,8 +24,7 @@ public class AcessoFuncionalidadeView {
     }
 
     private void coletarSelecao() {
-        String idAcesso = JOptionPane.showInputDialog("Informe o id de acesso");
-        controller.lerAcessoFuncionalidade(idAcesso);
+        controller.lerAcessoFuncionalidade();
     }
 
     private void coletarAtualizacao() {

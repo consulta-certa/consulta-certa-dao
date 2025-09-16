@@ -24,8 +24,7 @@ public class LembreteView {
     }
 
     private void coletarSelecao() {
-        String idLembrete = JOptionPane.showInputDialog("Informe o id do lembrete");
-        controller.lerLembrete(idLembrete);
+        controller.lerLembrete();
     }
 
     private void coletarAtualizacao() {

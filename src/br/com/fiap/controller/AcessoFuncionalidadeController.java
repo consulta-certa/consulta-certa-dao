@@ -33,13 +33,8 @@ public class AcessoFuncionalidadeController {
     }
 
     // READ
-    public void lerAcessoFuncionalidade(String idAcessoString) {
-        if (!Validacao.validarInteger(idAcessoString)) {
-            return;
-        }
-
-        int idAcesso = Integer.parseInt(idAcessoString);
-        JOptionPane.showMessageDialog(null, dao.selecionar(idAcesso));
+    public void lerAcessoFuncionalidade() {
+        JOptionPane.showMessageDialog(null, dao.selecionar());
     }
 
     // UPDATE

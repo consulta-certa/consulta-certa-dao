@@ -29,18 +29,8 @@ public class AcompanhanteController {
     }
 
     // READ
-    public void lerAcompanhante(String idAcompanhanteString) {
-        if (!Validacao.validarInteger(idAcompanhanteString)) {
-            return;
-        }
-
-        int idAcompanhante = Integer.parseInt(idAcompanhanteString);
-        Acompanhante acompanhante = dao.selecionar(idAcompanhante);
-        if (acompanhante != null) {
-            JOptionPane.showMessageDialog(null, "Acompanhante encontrado: " + acompanhante.getEmail());
-        } else {
-            JOptionPane.showMessageDialog(null, "Acompanhante não encontrado");
-        }
+    public void lerAcompanhante() {
+        JOptionPane.showMessageDialog(null, "Acompanhante não encontrado");
     }
 
     // UPDATE

@@ -34,10 +34,9 @@ public class ConsultaDAO {
     }
 
 //  READ
-    public String selecionar(int idConsulta) {
+    public String selecionar() {
         try {
-            PreparedStatement statement = consultaConn.prepareStatement("SELECT * FROM consultas WHERE idConsulta = ?"); // Não sei se é assim
-            statement.setInt(1, idConsulta);
+            PreparedStatement statement = consultaConn.prepareStatement("SELECT * FROM consultas");
             statement.execute();
             statement.close();
             return "Dados selecionados da tabela";
