@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ConversaChatbotDAO {
     private final Connection conn;
@@ -32,7 +33,7 @@ public class ConversaChatbotDAO {
     }
 
     // READ
-    public ArrayList<ConversaChatbot> selecionar() {
+    public List<ConversaChatbot> selecionar() {
         try {
             ArrayList<ConversaChatbot> listaConversas = new ArrayList<>();
 

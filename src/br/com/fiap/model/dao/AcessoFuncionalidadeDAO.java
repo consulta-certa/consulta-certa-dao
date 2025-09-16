@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class AcessoFuncionalidadeDAO {
     private final Connection conn;
@@ -33,7 +34,7 @@ public class AcessoFuncionalidadeDAO {
     }
 
     // READ
-    public ArrayList<AcessoFuncionalidade> selecionar() {
+    public List<AcessoFuncionalidade> selecionar() {
         try {
             ArrayList<AcessoFuncionalidade> listaAcessos = new ArrayList<>();
 

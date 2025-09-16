@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class PacienteDAO {
     private final Connection conn;
@@ -33,7 +34,7 @@ public class PacienteDAO {
         }
     }
 
-    public ArrayList<Paciente> selecionar() {
+    public List<Paciente> selecionar() {
         try {
             ArrayList<Paciente> listaPacientes = new ArrayList<>();
 

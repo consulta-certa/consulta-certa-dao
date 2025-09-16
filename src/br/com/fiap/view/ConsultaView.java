@@ -25,7 +25,8 @@ public class ConsultaView {
     }
 
     private void coletarSelecao () {
-        controller.lerConsulta();    }
+        controller.lerConsulta();
+    }
 
     private void coletarAtualizacao () {
         String especialidade = JOptionPane.showInputDialog("Informe a especialidade da consulta");

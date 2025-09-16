@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ConteudoDAO {
     private final Connection conn;
@@ -37,7 +38,7 @@ public class ConteudoDAO {
     }
 
     // READ
-    public ArrayList<Conteudo> selecionar() {
+    public List<Conteudo> selecionar() {
         try {
             ArrayList<Conteudo> listaConteudos = new ArrayList<>();
 

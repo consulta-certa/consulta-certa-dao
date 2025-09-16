@@ -6,6 +6,7 @@ import br.com.fiap.model.util.Validacao;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class AcessoFuncionalidadeController {

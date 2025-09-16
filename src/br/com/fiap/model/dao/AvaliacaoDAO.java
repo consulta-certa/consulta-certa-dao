@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class AvaliacaoDAO {
     private final Connection conn;
@@ -34,7 +35,7 @@ public class AvaliacaoDAO {
     }
 
     // READ
-    public ArrayList<Avaliacao> selecionar() {
+    public List<Avaliacao> selecionar() {
         try {
             ArrayList<Avaliacao> listaAvaliacoes = new ArrayList<>();
 
