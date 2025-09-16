@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class ConteudoDAO {
     private final Connection conn;
@@ -26,7 +27,7 @@ public class ConteudoDAO {
             stmt.setString(4, conteudo.getTexto());
             stmt.setString(5, conteudo.getVideo());
             stmt.setString(6, conteudo.getImagem());
-            stmt.setObject(7, conteudo.getDataPublicacao());
+            stmt.setTimestamp(7, java.sql.Timestamp.valueOf(conteudo.getDataPublicacao()));
             stmt.execute();
             stmt.close();
             return "Conteúdo inserido com sucesso!";
@@ -36,27 +37,34 @@ public class ConteudoDAO {
     }
 
     // READ
-    public Conteudo selecionar() {
+    public ArrayList<Conteudo> selecionar() {
         try {
+            ArrayList<Conteudo> listaConteudos = new ArrayList<>();
+
             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM conteudos");
             ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
+
+            while (rs.next()) {
                 Conteudo conteudo = new Conteudo();
-                conteudo.setIdConteudo(rs.getInt("idConteudo"));
-                conteudo.setTipo(rs.getString("tipo"));
-                conteudo.setTitulo(rs.getString("titulo"));
-                conteudo.setTexto(rs.getString("texto"));
-                conteudo.setVideo(rs.getString("video"));
-                conteudo.setImagem(rs.getString("imagem"));
-                conteudo.setDataPublicacao(rs.getObject("dataPublicacao", LocalDateTime.class));
-                return conteudo;
+
+                conteudo.setIdConteudo(rs.getInt(1));
+                conteudo.setTipo(rs.getString(2));
+                conteudo.setTitulo(rs.getString(3));
+                conteudo.setTexto(rs.getString(4));
+                conteudo.setVideo(rs.getString(5));
+                conteudo.setImagem(rs.getString(6));
+                conteudo.setDataPublicacao(rs.getTimestamp(7).toLocalDateTime());
+
+                listaConteudos.add(conteudo);
             }
+
             stmt.close();
-            return null;
+            return listaConteudos;
         } catch (SQLException e) {
-            throw new RuntimeException("Erro ao selecionar conteúdo", e);
+            throw new RuntimeException("Erro envolvendo SQL Statement", e);
         }
     }
+
 
     // UPDATE
     public String atualizar(Conteudo conteudo) {
@@ -67,7 +75,7 @@ public class ConteudoDAO {
             stmt.setString(3, conteudo.getTexto());
             stmt.setString(4, conteudo.getVideo());
             stmt.setString(5, conteudo.getImagem());
-            stmt.setObject(6, conteudo.getDataPublicacao());
+            stmt.setTimestamp(6, java.sql.Timestamp.valueOf(conteudo.getDataPublicacao()));
             stmt.setInt(7, conteudo.getIdConteudo());
             stmt.executeUpdate();
             stmt.close();

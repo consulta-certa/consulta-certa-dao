@@ -5,25 +5,27 @@ import br.com.fiap.model.util.ConnectionFactory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class PacienteDAO {
-    private final Connection pacienteConn;
+    private final Connection conn;
 
     public PacienteDAO () {
-        this.pacienteConn = new ConnectionFactory().getConnection();
+        this.conn = new ConnectionFactory().getConnection();
     }
 
     //  CREATE
     public String inserir(Paciente paciente) {
         try {
-            PreparedStatement statement = pacienteConn.prepareStatement("INSERT INTO pacientes VALUES (?, ?, ?, ?)");
-            statement.setInt(1, paciente.getIdPaciente());
-            statement.setString(2, paciente.getNome());
-            statement.setString(3, paciente.getEmail());
-            statement.setInt(4, paciente.getTelefone());
-            statement.execute();
-            statement.close();
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO pacientes VALUES (?, ?, ?, ?)");
+            stmt.setInt(1, paciente.getIdPaciente());
+            stmt.setString(2, paciente.getNome());
+            stmt.setString(3, paciente.getEmail());
+            stmt.setString(4, paciente.getTelefone());
+            stmt.execute();
+            stmt.close();
             return "Dados inseridos na tabela";
 
         } catch (SQLException e) {
@@ -31,20 +33,41 @@ public class PacienteDAO {
         }
     }
 
-    public String selecionar() {
-        return "E";
+    public ArrayList<Paciente> selecionar() {
+        try {
+            ArrayList<Paciente> listaPacientes = new ArrayList<>();
+
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM pacientes");
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Paciente paciente = new Paciente();
+
+                paciente.setIdPaciente(rs.getInt(1));
+                paciente.setNome(rs.getString(2));
+                paciente.setEmail(rs.getString(3));
+                paciente.setTelefone(rs.getString(4));
+
+                listaPacientes.add(paciente);
+            }
+
+            stmt.close();
+            return listaPacientes;
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro envolvendo SQL Statement", e);
+        }
     }
 
     //  UPDATE
     public String atualizar(Paciente paciente) {
         try {
-            PreparedStatement statement = pacienteConn.prepareStatement("UPDATE pacientes SET nome = ?, email = ?, telefone = ? WHERE id_paciente = ?");
-            statement.setString(1, paciente.getNome());
-            statement.setString(2, paciente.getEmail());
-            statement.setInt(3, paciente.getTelefone());
-            statement.setInt(4, paciente.getIdPaciente());
-            statement.executeUpdate();
-            statement.close();
+            PreparedStatement stmt = conn.prepareStatement("UPDATE pacientes SET nome = ?, email = ?, telefone = ? WHERE id_paciente = ?");
+            stmt.setString(1, paciente.getNome());
+            stmt.setString(2, paciente.getEmail());
+            stmt.setString(3, paciente.getTelefone());
+            stmt.setInt(4, paciente.getIdPaciente());
+            stmt.executeUpdate();
+            stmt.close();
             return "Dados atualizados na tabela";
 
         } catch (SQLException e) {
@@ -55,10 +78,10 @@ public class PacienteDAO {
     //  DELETE
     public String deletar(int idPaciente) {
         try {
-            PreparedStatement statement = pacienteConn.prepareStatement("DELETE FROM pacientes WHERE id_paciente = ?");
-            statement.setInt(1, idPaciente);
-            statement.execute();
-            statement.close();
+            PreparedStatement stmt = conn.prepareStatement("DELETE FROM pacientes WHERE id_paciente = ?");
+            stmt.setInt(1, idPaciente);
+            stmt.execute();
+            stmt.close();
             return "Dados removidos da tabela";
 
         } catch (SQLException e) {

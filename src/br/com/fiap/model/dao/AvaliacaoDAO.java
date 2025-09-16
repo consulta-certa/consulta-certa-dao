@@ -5,7 +5,9 @@ import br.com.fiap.model.util.ConnectionFactory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class AvaliacaoDAO {
     private final Connection conn;
@@ -17,14 +19,14 @@ public class AvaliacaoDAO {
     // CREATE
     public String inserir(Avaliacao avaliacao) {
         try {
-            PreparedStatement statement = conn.prepareStatement("INSERT INTO avaliacoes VALUES (?, ?, ?, ?, ?)");
-            statement.setInt(1, avaliacao.getIdAvaliacao());
-            statement.setInt(2, avaliacao.getNota());
-            statement.setString(3, avaliacao.getComentario());
-            statement.setTimestamp(4, java.sql.Timestamp.valueOf(avaliacao.getDataAvaliacao()));
-            statement.setInt(5, avaliacao.getIdLembrete());
-            statement.execute();
-            statement.close();
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO avaliacoes VALUES (?, ?, ?, ?, ?)");
+            stmt.setInt(1, avaliacao.getIdAvaliacao());
+            stmt.setInt(2, avaliacao.getNota());
+            stmt.setString(3, avaliacao.getComentario());
+            stmt.setTimestamp(4, java.sql.Timestamp.valueOf(avaliacao.getDataAvaliacao()));
+            stmt.setInt(5, avaliacao.getIdLembrete());
+            stmt.execute();
+            stmt.close();
             return "Dados inseridos na tabela";
         } catch (SQLException e) {
             throw new RuntimeException("Erro envolvendo SQL Statement", e);
@@ -32,28 +34,44 @@ public class AvaliacaoDAO {
     }
 
     // READ
-    public String selecionar() {
+    public ArrayList<Avaliacao> selecionar() {
         try {
-            PreparedStatement statement = conn.prepareStatement("SELECT * FROM avaliacoes");
-            statement.execute();
-            statement.close();
-            return "Dados selecionados da tabela";
+            ArrayList<Avaliacao> listaAvaliacoes = new ArrayList<>();
+
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM avaliacoes");
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Avaliacao avaliacao = new Avaliacao();
+
+                avaliacao.setIdAvaliacao(rs.getInt(1));
+                avaliacao.setNota(rs.getInt(2));
+                avaliacao.setComentario(rs.getString(3));
+                avaliacao.setDataAvaliacao(rs.getTimestamp(4).toLocalDateTime());
+                avaliacao.setIdLembrete(rs.getInt(5));
+
+                listaAvaliacoes.add(avaliacao);
+            }
+
+            stmt.close();
+            return listaAvaliacoes;
         } catch (SQLException e) {
             throw new RuntimeException("Erro envolvendo SQL Statement", e);
         }
     }
 
+
     // UPDATE
     public String atualizar(Avaliacao avaliacao) {
         try {
-            PreparedStatement statement = conn.prepareStatement("UPDATE avaliacoes SET nota = ?, comentario = ?, data_avaliacao = ?, id_lembrete = ? WHERE idAvaliacao = ?");
-            statement.setInt(1, avaliacao.getNota());
-            statement.setString(2, avaliacao.getComentario());
-            statement.setTimestamp(3, java.sql.Timestamp.valueOf(avaliacao.getDataAvaliacao()));
-            statement.setInt(4, avaliacao.getIdLembrete());
-            statement.setInt(5, avaliacao.getIdAvaliacao());
-            statement.executeUpdate();
-            statement.close();
+            PreparedStatement stmt = conn.prepareStatement("UPDATE avaliacoes SET nota = ?, comentario = ?, data_avaliacao = ?, id_lembrete = ? WHERE idAvaliacao = ?");
+            stmt.setInt(1, avaliacao.getNota());
+            stmt.setString(2, avaliacao.getComentario());
+            stmt.setTimestamp(3, java.sql.Timestamp.valueOf(avaliacao.getDataAvaliacao()));
+            stmt.setInt(4, avaliacao.getIdLembrete());
+            stmt.setInt(5, avaliacao.getIdAvaliacao());
+            stmt.executeUpdate();
+            stmt.close();
             return "Dados atualizados na tabela";
         } catch (SQLException e) {
             throw new RuntimeException("Erro envolvendo SQL Statement", e);
@@ -63,10 +81,10 @@ public class AvaliacaoDAO {
     // DELETE
     public String deletar(int idAvaliacao) {
         try {
-            PreparedStatement statement = conn.prepareStatement("DELETE FROM avaliacoes WHERE idAvaliacao = ?");
-            statement.setInt(1, idAvaliacao);
-            statement.execute();
-            statement.close();
+            PreparedStatement stmt = conn.prepareStatement("DELETE FROM avaliacoes WHERE idAvaliacao = ?");
+            stmt.setInt(1, idAvaliacao);
+            stmt.execute();
+            stmt.close();
             return "Dados removidos da tabela";
         } catch (SQLException e) {
             throw new RuntimeException("Erro envolvendo SQL Statement", e);

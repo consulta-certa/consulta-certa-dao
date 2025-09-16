@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class AcompanhanteDAO {
     private final Connection conn;
@@ -33,23 +34,29 @@ public class AcompanhanteDAO {
     }
 
     // READ
-    public Acompanhante selecionar() {
+    public ArrayList<Acompanhante> selecionar() {
         try {
+            ArrayList<Acompanhante> listaAcompanhantes = new ArrayList<>();
+
             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM acompanhantes");
             ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
+
+            while (rs.next()) {
                 Acompanhante acompanhante = new Acompanhante();
-                acompanhante.setIdAcompanhante(rs.getInt("idAcompanhante"));
-                acompanhante.setEmail(rs.getString("email"));
-                acompanhante.setTelefone(rs.getString("telefone"));
-                acompanhante.setParentesco(rs.getString("parentesco"));
-                acompanhante.setIdPaciente(rs.getInt("idPaciente"));
-                return acompanhante;
+
+                acompanhante.setIdAcompanhante(rs.getInt(1));
+                acompanhante.setEmail(rs.getString(2));
+                acompanhante.setTelefone(rs.getString(3));
+                acompanhante.setParentesco(rs.getString(4));
+                acompanhante.setIdPaciente(rs.getInt(5));
+
+                listaAcompanhantes.add(acompanhante);
             }
+
             stmt.close();
-            return null;
+            return listaAcompanhantes;
         } catch (SQLException e) {
-            throw new RuntimeException("Erro ao selecionar acompanhante", e);
+            throw new RuntimeException("Erro envolvendo SQL Statement", e);
         }
     }
 

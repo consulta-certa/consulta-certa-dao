@@ -4,12 +4,12 @@ public class Paciente {
     private int idPaciente;
     private String nome;
     private String email;
-    private int telefone;
+    private String telefone;
 
     public Paciente() {
     }
 
-    public Paciente(int idPaciente, String nome, String email, int telefone) {
+    public Paciente(int idPaciente, String nome, String email, String telefone) {
         this.idPaciente = idPaciente;
         this.nome = nome;
         this.email = email;
@@ -40,11 +40,11 @@ public class Paciente {
         this.email = email;
     }
 
-    public int getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(int telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 }

@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class LembreteDAO {
     private final Connection conn;
@@ -22,7 +23,7 @@ public class LembreteDAO {
             PreparedStatement stmt = conn.prepareStatement("INSERT INTO lembretes VALUES (?, ?, ?, ?)");
             stmt.setInt(1, lembrete.getIdLembrete());
             stmt.setString(2, lembrete.getCanalEnvio());
-            stmt.setObject(3, lembrete.getDataEnvio());
+            stmt.setTimestamp(3, java.sql.Timestamp.valueOf(lembrete.getDataEnvio()));
             stmt.setInt(4, lembrete.getIdConsulta());
             stmt.execute();
             stmt.close();
@@ -33,31 +34,38 @@ public class LembreteDAO {
     }
 
     // READ
-    public Lembrete selecionar() {
+    public ArrayList<Lembrete> selecionar() {
         try {
+            ArrayList<Lembrete> listaLembretes = new ArrayList<>();
+
             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM lembretes");
             ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
+
+            while (rs.next()) {
                 Lembrete lembrete = new Lembrete();
-                lembrete.setIdLembrete(rs.getInt("idLembrete"));
-                lembrete.setCanalEnvio(rs.getString("canalEnvio"));
-                lembrete.setDataEnvio(rs.getObject("dataEnvio", LocalDateTime.class));
-                lembrete.setIdConsulta(rs.getInt("idConsulta"));
-                return lembrete;
+
+                lembrete.setIdLembrete(rs.getInt(1));
+                lembrete.setCanalEnvio(rs.getString(2));
+                lembrete.setDataEnvio(rs.getTimestamp(3).toLocalDateTime());
+                lembrete.setIdConsulta(rs.getInt(4));
+
+                listaLembretes.add(lembrete);
             }
+
             stmt.close();
-            return null;
+            return listaLembretes;
         } catch (SQLException e) {
-            throw new RuntimeException("Erro ao selecionar lembrete", e);
+            throw new RuntimeException("Erro envolvendo SQL Statement", e);
         }
     }
+
 
     // UPDATE
     public String atualizar(Lembrete lembrete) {
         try {
             PreparedStatement stmt = conn.prepareStatement("UPDATE lembretes SET canalEnvio = ?, dataEnvio = ?, idConsulta = ? WHERE idLembrete = ?");
             stmt.setString(1, lembrete.getCanalEnvio());
-            stmt.setObject(2, lembrete.getDataEnvio());
+            stmt.setTimestamp(2, java.sql.Timestamp.valueOf(lembrete.getDataEnvio()));
             stmt.setInt(3, lembrete.getIdConsulta());
             stmt.setInt(4, lembrete.getIdLembrete());
             stmt.executeUpdate();

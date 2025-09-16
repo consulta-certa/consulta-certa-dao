@@ -15,18 +15,17 @@ public class PacienteController {
     }
 
     //  Execução do CREATE
-    public void inserirPaciente(String idPacienteString, String nome, String email, String telefoneString) {
+    public void inserirPaciente(String idPacienteString, String nome, String email, String telefone) {
         if (
             !Validacao.validarInteger(idPacienteString) ||
             !Validacao.validarNome(nome) ||
             !Validacao.validarEmail(email) ||
-            !Validacao.validarInteger(telefoneString)
+            !Validacao.validarTelefone(telefone)
         ) {
             return;
         }
 
         int idPaciente = Integer.parseInt(idPacienteString);
-        int telefone = Integer.parseInt(telefoneString);
 
         Paciente paciente = new Paciente();
         paciente.setIdPaciente(idPaciente);
@@ -42,18 +41,17 @@ public class PacienteController {
     }
 
     // Execução do UPDATE
-    public void atualizarPaciente(String nome, String email, String telefoneString, String idPacienteString) {
+    public void atualizarPaciente(String nome, String email, String telefone, String idPacienteString) {
         if (
             !Validacao.validarNome(nome) ||
             !Validacao.validarEmail(email) ||
-            !Validacao.validarInteger(telefoneString) ||
+            !Validacao.validarTelefone(telefone) ||
             !Validacao.validarInteger(idPacienteString)
         ) {
             return;
         }
 
         int idPaciente = Integer.parseInt(idPacienteString);
-        int telefone = Integer.parseInt(telefoneString);
 
         Paciente paciente = new Paciente();
         paciente.setNome(nome);

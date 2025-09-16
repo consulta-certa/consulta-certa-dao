@@ -5,27 +5,29 @@ import br.com.fiap.model.entity.Consulta;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class ConsultaDAO {
-    private final Connection consultaConn;
+    private final Connection conn;
 
     public ConsultaDAO() {
-        this.consultaConn = new ConnectionFactory().getConnection();
+        this.conn = new ConnectionFactory().getConnection();
     }
 
 /*  OPERAÇÕES CRUD */
 //  CREATE
     public String inserir(Consulta consulta) {
         try {
-            PreparedStatement statement = consultaConn.prepareStatement("INSERT INTO consultas VALUES (?, ?, ?, ?, ?)");
-            statement.setInt(1, consulta.getIdConsulta());
-            statement.setString(2, consulta.getEspecialidade());
-            statement.setTimestamp(3, java.sql.Timestamp.valueOf(consulta.getDataConsulta()));
-            statement.setString(4, consulta.getStatus());
-            statement.setInt(5, consulta.getIdPaciente());
-            statement.execute();
-            statement.close();
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO consultas VALUES (?, ?, ?, ?, ?)");
+            stmt.setInt(1, consulta.getIdConsulta());
+            stmt.setString(2, consulta.getEspecialidade());
+            stmt.setTimestamp(3, java.sql.Timestamp.valueOf(consulta.getDataConsulta()));
+            stmt.setString(4, consulta.getStatus());
+            stmt.setInt(5, consulta.getIdPaciente());
+            stmt.execute();
+            stmt.close();
             return "Dados inseridos na tabela";
 
         } catch (SQLException e) {
@@ -34,29 +36,44 @@ public class ConsultaDAO {
     }
 
 //  READ
-    public String selecionar() {
-        try {
-            PreparedStatement statement = consultaConn.prepareStatement("SELECT * FROM consultas");
-            statement.execute();
-            statement.close();
-            return "Dados selecionados da tabela";
+public ArrayList<Consulta> selecionar() {
+    try {
+        ArrayList<Consulta> listaConsultas = new ArrayList<>();
 
-        } catch (SQLException e) {
-            throw new RuntimeException("Erro envolvendo SQL Statement", e);
+        PreparedStatement stmt = conn.prepareStatement("SELECT * FROM consultas");
+        ResultSet rs = stmt.executeQuery();
+
+        while (rs.next()) {
+            Consulta consulta = new Consulta();
+
+            consulta.setIdConsulta(rs.getInt(1));
+            consulta.setEspecialidade(rs.getString(2));
+            consulta.setDataConsulta(rs.getTimestamp(3).toLocalDateTime());
+            consulta.setStatus(rs.getString(4));
+            consulta.setIdPaciente(rs.getInt(5));
+
+            listaConsultas.add(consulta);
         }
+
+        stmt.close();
+        return listaConsultas;
+    } catch (SQLException e) {
+        throw new RuntimeException("Erro envolvendo SQL Statement", e);
     }
+}
+
 
 //  UPDATE
     public String atualizar(Consulta consulta) {
         try {
-            PreparedStatement statement = consultaConn.prepareStatement("UPDATE consultas SET especialidade = ?, data_consulta = ?, status = ?, id_paciente = ? WHERE idConsulta = ?");
-            statement.setString(1, consulta.getEspecialidade());
-            statement.setTimestamp(3, java.sql.Timestamp.valueOf(consulta.getDataConsulta()));
-            statement.setString(3, consulta.getStatus());
-            statement.setInt(4, consulta.getIdPaciente());
-            statement.setInt(5, consulta.getIdConsulta());
-            statement.executeUpdate();
-            statement.close();
+            PreparedStatement stmt = conn.prepareStatement("UPDATE consultas SET especialidade = ?, data_consulta = ?, status = ?, id_paciente = ? WHERE idConsulta = ?");
+            stmt.setString(1, consulta.getEspecialidade());
+            stmt.setTimestamp(3, java.sql.Timestamp.valueOf(consulta.getDataConsulta()));
+            stmt.setString(3, consulta.getStatus());
+            stmt.setInt(4, consulta.getIdPaciente());
+            stmt.setInt(5, consulta.getIdConsulta());
+            stmt.executeUpdate();
+            stmt.close();
             return "Dados atualizados na tabela";
 
         } catch (SQLException e) {
@@ -67,10 +84,10 @@ public class ConsultaDAO {
 //  DELETE
     public String deletar(int idConsulta) {
         try {
-            PreparedStatement statement = consultaConn.prepareStatement("DELETE FROM consultas WHERE idConsulta = ?");
-            statement.setInt(1, idConsulta);
-            statement.execute();
-            statement.close();
+            PreparedStatement stmt = conn.prepareStatement("DELETE FROM consultas WHERE idConsulta = ?");
+            stmt.setInt(1, idConsulta);
+            stmt.execute();
+            stmt.close();
             return "Dados removidos da tabela";
 
         } catch (SQLException e) {
