@@ -39,17 +39,22 @@ public class AcessoFuncionalidadeController {
     public void lerAcessoFuncionalidade() {
         String continuar;
         int contador = 0;
-        ArrayList<AcessoFuncionalidade> acessosSelecionados = dao.selecionar();
+        List<AcessoFuncionalidade> acessosSelecionados = dao.selecionar();
 
         int quantSelecionados = acessosSelecionados.toArray().length;
 
         do {
+            if (quantSelecionados == 0) {
+                JOptionPane.showMessageDialog(null, "Lista vazia.");
+                return;
+            }
+
             JOptionPane.showMessageDialog(null, acessosSelecionados.get(contador), "RESULTADOS DA QUERY EM acessos_funcionalidade", JOptionPane.INFORMATION_MESSAGE);
 
-            if (quantSelecionados > 0 && contador < quantSelecionados) {
+            if (quantSelecionados > 0 && contador < quantSelecionados-1) {
                 continuar = (JOptionPane.showInputDialog(null, "Deseja ver o próximo registro? Informe apenas S para sim e N para não", JOptionPane.QUESTION_MESSAGE));
 
-                while (!Validacao.validarNome(continuar) || !continuar.equalsIgnoreCase("N")) {
+                while (!Validacao.validarNome(continuar) || (!continuar.equalsIgnoreCase("N") && !continuar.equalsIgnoreCase("S"))) {
                     JOptionPane.showMessageDialog(null, "Informe apenas S ou N");
                     continuar = JOptionPane.showInputDialog(null, "Deseja ver o próximo registro? Informe apenas S para sim e N para não", JOptionPane.QUESTION_MESSAGE);
                 }

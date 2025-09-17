@@ -30,7 +30,7 @@ public class AcompanhanteController {
 
     // READ
     public void lerAcompanhante() {
-        JOptionPane.showMessageDialog(null, "Acompanhante não encontrado");
+        JOptionPane.showMessageDialog(null, dao.selecionar());
     }
 
     // UPDATE
