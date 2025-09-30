@@ -12,7 +12,7 @@ public class Consulta {
     public Consulta() {
     }
 
-    public Consulta(int idConsulta, String especialidade, LocalDateTime dataConsulta, String status, int id_paciente) {
+    public Consulta(int idConsulta, String especialidade, LocalDateTime dataConsulta, String status, int idPaciente) {
         this.idConsulta = idConsulta;
         this.especialidade = especialidade;
         this.dataConsulta = dataConsulta;
@@ -52,11 +52,23 @@ public class Consulta {
         this.status = status;
     }
 
+
     public int getIdPaciente() {
         return idPaciente;
     }
 
     public void setIdPaciente(int idPaciente) {
         this.idPaciente = idPaciente;
+    }
+
+    @Override
+    public String toString() {
+        return (
+            "\nid_consulta: " + idConsulta +
+            "\nespecialidade: " + especialidade +
+            "\ndata_consulta: " + dataConsulta +
+            "\nstatus: " + status +
+            "\nid_paciente: " + idPaciente
+        );
     }
 }

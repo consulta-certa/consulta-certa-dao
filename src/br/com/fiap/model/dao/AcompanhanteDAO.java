@@ -20,12 +20,13 @@ public class AcompanhanteDAO {
     // CREATE
     public String inserir(Acompanhante acompanhante) {
         try {
-            PreparedStatement stmt = conn.prepareStatement("INSERT INTO acompanhantes VALUES (?, ?, ?, ?, ?)");
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO acompanhantes VALUES (?, ?, ?, ?, ?, ?)");
             stmt.setInt(1, acompanhante.getIdAcompanhante());
-            stmt.setString(2, acompanhante.getEmail());
-            stmt.setString(3, acompanhante.getTelefone());
-            stmt.setString(4, acompanhante.getParentesco());
-            stmt.setInt(5, acompanhante.getIdPaciente());
+            stmt.setString(2, acompanhante.getNome());
+            stmt.setString(3, acompanhante.getEmail());
+            stmt.setString(4, acompanhante.getTelefone());
+            stmt.setString(5, acompanhante.getParentesco());
+            stmt.setInt(6, acompanhante.getIdPaciente());
             stmt.execute();
             stmt.close();
             return "Acompanhante inserido com sucesso!";
@@ -64,12 +65,13 @@ public class AcompanhanteDAO {
     // UPDATE
     public String atualizar(Acompanhante acompanhante) {
         try {
-            PreparedStatement stmt = conn.prepareStatement("UPDATE acompanhantes SET email = ?, telefone = ?, parentesco = ?, idPaciente = ? WHERE idAcompanhante = ?");
-            stmt.setString(1, acompanhante.getEmail());
-            stmt.setString(2, acompanhante.getTelefone());
-            stmt.setString(3, acompanhante.getParentesco());
-            stmt.setInt(4, acompanhante.getIdPaciente());
-            stmt.setInt(5, acompanhante.getIdAcompanhante());
+            PreparedStatement stmt = conn.prepareStatement("UPDATE acompanhantes SET nome = ?, email = ?, telefone = ?, parentesco = ?, idPaciente = ? WHERE idAcompanhante = ?");
+            stmt.setString(1, acompanhante.getNome());
+            stmt.setString(2, acompanhante.getEmail());
+            stmt.setString(3, acompanhante.getTelefone());
+            stmt.setString(4, acompanhante.getParentesco());
+            stmt.setInt(5, acompanhante.getIdPaciente());
+            stmt.setInt(6, acompanhante.getIdAcompanhante());
             stmt.executeUpdate();
             stmt.close();
             return "Acompanhante atualizado com sucesso!";
@@ -81,7 +83,7 @@ public class AcompanhanteDAO {
     // DELETE
     public String deletar(int idAcompanhante) {
         try {
-            PreparedStatement stmt = conn.prepareStatement("DELETE FROM acompanhantes WHERE idAcompanhante = ?");
+            PreparedStatement stmt = conn.prepareStatement("DELETE FROM acompanhantes WHERE id_acompanhante = ?");
             stmt.setInt(1, idAcompanhante);
             stmt.execute();
             stmt.close();

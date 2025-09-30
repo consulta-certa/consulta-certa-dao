@@ -20,7 +20,7 @@ public class Main {
         String opcao;
         int opcaoValida = 0;
         do {
-            opcao = JOptionPane.showInputDialog(null, "Escolha um número entre 0 e 9:\n1. Acessar operações CRUD da tabela acessos_funcionalidade\n2. Acessar operações CRUD da tabela acompanhantes\n3. Acessar operações CRUD da tabela avaliacoes\n4. Acessar operações CRUD da tabela consultas\n5. Acessar operações CRUD da tabela contatos\n6. Acessar operações CRUD da tabela conteudos\n7. Acessar operações CRUD da tabela conversas_chatbot\n8. Acessar operações CRUD da tabela lembretes\n9. Acessar operações CRUD da tabela pacientes\n0. Sair do programa.", "MENU PRINCIPAL", JOptionPane.QUESTION_MESSAGE);
+            opcao = JOptionPane.showInputDialog(null, "Escolha um número entre 0 e 9:\n1. CRUD da tabela acessos_funcionalidade\n2. CRUD da tabela acompanhantes\n3. CRUD da tabela avaliacoes\n4. CRUD da tabela consultas\n5. CRUD da tabela contatos\n6. CRUD da tabela conteudos\n7. CRUD da tabela conversas_chatbot\n8. CRUD da tabela lembretes\n9. CRUD da tabela pacientes\n0. Sair do programa.", "MENU PRINCIPAL", JOptionPane.QUESTION_MESSAGE);
 
             if (Validacao.validarInteger(opcao)) {
                 opcaoValida = Integer.parseInt(opcao);

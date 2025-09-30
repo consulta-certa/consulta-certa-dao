@@ -17,10 +17,9 @@ public class LembreteView {
 
     private void coletarInsercao() {
         String idLembrete = JOptionPane.showInputDialog("Informe o id do lembrete");
-        String canalEnvio = JOptionPane.showInputDialog("Informe o canal de envio do lembrete");
         String dataEnvio = JOptionPane.showInputDialog("Informe a data de envio do lembrete no padrão DD/MM/AAAA HH:MM");
         String idConsulta = JOptionPane.showInputDialog("Informe o id da consulta associada");
-        controller.inserirLembrete(idLembrete, canalEnvio, dataEnvio, idConsulta);
+        controller.inserirLembrete(idLembrete, dataEnvio, idConsulta);
     }
 
     private void coletarSelecao() {
@@ -29,10 +28,9 @@ public class LembreteView {
 
     private void coletarAtualizacao() {
         String idLembrete = JOptionPane.showInputDialog("Informe o id do lembrete");
-        String canalEnvio = JOptionPane.showInputDialog("Informe o canal de envio do lembrete");
         String dataEnvio = JOptionPane.showInputDialog("Informe a data de envio do lembrete no padrão DD/MM/AAAA HH:MM");
         String idConsulta = JOptionPane.showInputDialog("Informe o id da consulta associada");
-        controller.atualizarLembrete(idLembrete, canalEnvio, dataEnvio, idConsulta);
+        controller.atualizarLembrete(dataEnvio, idConsulta, idLembrete);
     }
 
     private void coletarRemocao() {

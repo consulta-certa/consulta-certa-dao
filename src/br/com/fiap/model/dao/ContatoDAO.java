@@ -25,7 +25,7 @@ public class ContatoDAO {
             stmt.setString(2, contato.getNome());
             stmt.setString(3, contato.getTelefone());
             stmt.setString(4, contato.getEmail());
-            stmt.setString(5, contato.getNumero());
+            stmt.setInt(5, contato.getNumero());
             stmt.setString(6, contato.getRua());
             stmt.setString(7, contato.getBairro());
             stmt.setString(8, contato.getCidade());
@@ -53,7 +53,7 @@ public class ContatoDAO {
                 contato.setNome(rs.getString(2));
                 contato.setTelefone(rs.getString(3));
                 contato.setEmail(rs.getString(4));
-                contato.setNumero(rs.getString(5));
+                contato.setNumero(rs.getInt(5));
                 contato.setRua(rs.getString(6));
                 contato.setBairro(rs.getString(7));
                 contato.setCidade(rs.getString(8));
@@ -77,7 +77,7 @@ public class ContatoDAO {
             stmt.setString(1, contato.getNome());
             stmt.setString(2, contato.getTelefone());
             stmt.setString(3, contato.getEmail());
-            stmt.setString(4, contato.getNumero());
+            stmt.setInt(4, contato.getNumero());
             stmt.setString(5, contato.getRua());
             stmt.setString(6, contato.getBairro());
             stmt.setString(7, contato.getCidade());

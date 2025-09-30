@@ -17,8 +17,8 @@ public class Validacao {
         }
     }
 
-    public static boolean validarNome (String entrada) {
-        if (entrada != null && entrada.matches("^[\\p{L}\\s]+$")) {
+    public static boolean validarTexto (String entrada) {
+        if (entrada.matches("^[\\p{L}\\s]+$")) {
             return true;
         } else {
             JOptionPane.showMessageDialog(null, "Operação cancelada. Inserir apenas letras.");
@@ -29,12 +29,7 @@ public class Validacao {
     public static boolean validarData(String entrada) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu HH:mm").withResolverStyle(ResolverStyle.STRICT);
         try {
-            LocalDateTime data = LocalDateTime.parse(entrada, formatter);
-            if (data.isBefore(LocalDateTime.now())) {
-                JOptionPane.showMessageDialog(null, "Operação cancelada. Inserir apenas uma data válida a partir de hoje.");
-                return false;
-            }
-
+            LocalDateTime.parse(entrada, formatter);
             return true;
         } catch (DateTimeParseException e) {
             JOptionPane.showMessageDialog(null, "Operação cancelada. Inserir apenas no formato exato 'DD/MM/AAAA HH:MM'.");
@@ -43,7 +38,7 @@ public class Validacao {
     }
 
     public static boolean validarEmail(String entrada) {
-        if (entrada != null && entrada.matches("^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$")) {
+        if (entrada.matches("^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$")) {
             return true;
         } else {
             JOptionPane.showMessageDialog(null, "Operação cancelada. Inserir um email.");
@@ -52,7 +47,7 @@ public class Validacao {
     }
     
     public static boolean validarCep(String entrada) {
-        if (entrada != null && entrada.matches("(^[0-9]{5})-?([0-9]{3}$)")) {
+        if (entrada.matches("(^[0-9]{5})-?([0-9]{3}$)")) {
             return true;
         } else {
             JOptionPane.showMessageDialog(null, "Operação cancelada. Inserir um email.");
@@ -61,7 +56,7 @@ public class Validacao {
     }
     
     public static boolean validarTelefone(String entrada) {
-        if (entrada != null && entrada.matches("(^[0-9]{2})?(\\s|-)?(9?[0-9]{4})-?([0-9]{4}$)")) {
+        if (entrada.matches("(^[0-9]{2})?(\\s|-)?(9?[0-9]{4})-?([0-9]{4}$)")) {
             return true;
         } else {
             JOptionPane.showMessageDialog(null, "Operação cancelada. Inserir um email.");

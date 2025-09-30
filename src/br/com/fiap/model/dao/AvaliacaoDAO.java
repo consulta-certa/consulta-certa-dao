@@ -20,12 +20,11 @@ public class AvaliacaoDAO {
     // CREATE
     public String inserir(Avaliacao avaliacao) {
         try {
-            PreparedStatement stmt = conn.prepareStatement("INSERT INTO avaliacoes VALUES (?, ?, ?, ?, ?)");
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO avaliacoes VALUES (?, ?, ?, ?, )");
             stmt.setInt(1, avaliacao.getIdAvaliacao());
             stmt.setInt(2, avaliacao.getNota());
             stmt.setString(3, avaliacao.getComentario());
             stmt.setTimestamp(4, java.sql.Timestamp.valueOf(avaliacao.getDataAvaliacao()));
-            stmt.setInt(5, avaliacao.getIdLembrete());
             stmt.execute();
             stmt.close();
             return "Dados inseridos na tabela";
@@ -49,7 +48,6 @@ public class AvaliacaoDAO {
                 avaliacao.setNota(rs.getInt(2));
                 avaliacao.setComentario(rs.getString(3));
                 avaliacao.setDataAvaliacao(rs.getTimestamp(4).toLocalDateTime());
-                avaliacao.setIdLembrete(rs.getInt(5));
 
                 listaAvaliacoes.add(avaliacao);
             }
@@ -65,11 +63,10 @@ public class AvaliacaoDAO {
     // UPDATE
     public String atualizar(Avaliacao avaliacao) {
         try {
-            PreparedStatement stmt = conn.prepareStatement("UPDATE avaliacoes SET nota = ?, comentario = ?, data_avaliacao = ?, id_lembrete = ? WHERE idAvaliacao = ?");
+            PreparedStatement stmt = conn.prepareStatement("UPDATE avaliacoes SET nota = ?, comentario = ?, data_avaliacao = ? WHERE idAvaliacao = ?");
             stmt.setInt(1, avaliacao.getNota());
             stmt.setString(2, avaliacao.getComentario());
             stmt.setTimestamp(3, java.sql.Timestamp.valueOf(avaliacao.getDataAvaliacao()));
-            stmt.setInt(4, avaliacao.getIdLembrete());
             stmt.setInt(5, avaliacao.getIdAvaliacao());
             stmt.executeUpdate();
             stmt.close();
@@ -82,7 +79,7 @@ public class AvaliacaoDAO {
     // DELETE
     public String deletar(int idAvaliacao) {
         try {
-            PreparedStatement stmt = conn.prepareStatement("DELETE FROM avaliacoes WHERE idAvaliacao = ?");
+            PreparedStatement stmt = conn.prepareStatement("DELETE FROM avaliacoes WHERE id_avaliacao = ?");
             stmt.setInt(1, idAvaliacao);
             stmt.execute();
             stmt.close();

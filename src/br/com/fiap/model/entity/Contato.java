@@ -5,7 +5,7 @@ public class Contato {
     private String nome;
     private String telefone;
     private String email;
-    private String numero;
+    private int numero;
     private String rua;
     private String bairro;
     private String cidade;
@@ -14,7 +14,7 @@ public class Contato {
     public Contato() {
     }
 
-    public Contato(int idContato, String nome, String telefone, String email, String numero, String rua, String bairro, String cidade, String cep) {
+    public Contato(int idContato, String nome, String telefone, String email, int numero, String rua, String bairro, String cidade, String cep) {
         this.idContato = idContato;
         this.nome = nome;
         this.telefone = telefone;
@@ -58,11 +58,11 @@ public class Contato {
         this.email = email;
     }
 
-    public String getNumero() {
+    public int getNumero() {
         return numero;
     }
 
-    public void setNumero(String numero) {
+    public void setNumero(int numero) {
         this.numero = numero;
     }
 
@@ -96,5 +96,20 @@ public class Contato {
 
     public void setCep(String cep) {
         this.cep = cep;
+    }
+
+    @Override
+    public String toString() {
+        return (
+            "\nid_contato: " + idContato +
+            "\nnome: " + nome +
+            "\ntelefone: " + telefone +
+            "\nemail: " + email +
+            "\nnumero: " + numero +
+            "\nrua: " + rua +
+            "\nbairro: " + bairro +
+            "\ncidade: " + cidade +
+            "\ncep: " + cep
+        );
     }
 }

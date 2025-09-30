@@ -18,7 +18,7 @@ public class ConversaChatbotView {
     private void coletarInsercao() {
         String idConversa = JOptionPane.showInputDialog("Informe o id da conversa");
         String pergunta = JOptionPane.showInputDialog("Informe a pergunta");
-        String aprovacao = JOptionPane.showInputDialog("Informe o status de aprovação da conversa (S se foi aprovada e N se não foi)");
+        int aprovacao = JOptionPane.showConfirmDialog(null, "Informe o status de aprovação da conversa (S se foi aprovada e N se não foi)", "", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         controller.inserirConversaChatbot(idConversa, pergunta, aprovacao);
     }
 
@@ -29,8 +29,8 @@ public class ConversaChatbotView {
     private void coletarAtualizacao() {
         String idConversa = JOptionPane.showInputDialog("Informe o id da conversa");
         String pergunta = JOptionPane.showInputDialog("Informe a pergunta");
-        String aprovacao = JOptionPane.showInputDialog("Informe o status de aprovação da conversa (S se foi aprovada e N se não foi)");
-        controller.atualizarConversaChatbot(idConversa, pergunta, aprovacao);
+        int aprovacao = JOptionPane.showConfirmDialog(null, "Informe o status de aprovação da conversa (S se foi aprovada e N se não foi)", "", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        controller.atualizarConversaChatbot(pergunta, aprovacao, idConversa);
     }
 
     private void coletarRemocao() {

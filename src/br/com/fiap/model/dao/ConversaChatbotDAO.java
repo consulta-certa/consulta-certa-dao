@@ -76,7 +76,7 @@ public class ConversaChatbotDAO {
     // DELETE
     public String deletar(int idConversa) {
         try {
-            PreparedStatement stmt = conn.prepareStatement("DELETE FROM conversas_chatbot WHERE idConversa = ?");
+            PreparedStatement stmt = conn.prepareStatement("DELETE FROM conversas_chatbot WHERE id_conversa = ?");
             stmt.setInt(1, idConversa);
             stmt.execute();
             stmt.close();

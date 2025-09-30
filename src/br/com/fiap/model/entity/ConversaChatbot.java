@@ -36,4 +36,13 @@ public class ConversaChatbot {
     public void setAprovacao(String aprovacao) {
         this.aprovacao = aprovacao;
     }
+
+    @Override
+    public String toString() {
+        return (
+            "\nid_conversa: " + idConversa +
+            "\npergunta: " + pergunta +
+            "\naprovacao: " + aprovacao
+        );
+    }
 }

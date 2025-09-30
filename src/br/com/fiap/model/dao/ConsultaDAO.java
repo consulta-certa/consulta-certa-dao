@@ -85,7 +85,7 @@ public List<Consulta> selecionar() {
 //  DELETE
     public String deletar(int idConsulta) {
         try {
-            PreparedStatement stmt = conn.prepareStatement("DELETE FROM consultas WHERE idConsulta = ?");
+            PreparedStatement stmt = conn.prepareStatement("DELETE FROM consultas WHERE id_consulta = ?");
             stmt.setInt(1, idConsulta);
             stmt.execute();
             stmt.close();

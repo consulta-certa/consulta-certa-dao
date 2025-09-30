@@ -32,7 +32,7 @@ public class AcessoFuncionalidadeView {
         String funcionalidade = JOptionPane.showInputDialog("Informe a funcionalidade");
         String quantidadeAcessos = JOptionPane.showInputDialog("Informe a quantidade de acessos");
         String tempoPermanenciaSeg = JOptionPane.showInputDialog("Informe o tempo de permanência em segundos");
-        controller.atualizarAcessoFuncionalidade(idAcesso, funcionalidade, quantidadeAcessos, tempoPermanenciaSeg);
+        controller.atualizarAcessoFuncionalidade(funcionalidade, quantidadeAcessos, tempoPermanenciaSeg, idAcesso);
     }
 
     private void coletarRemocao() {

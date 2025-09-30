@@ -78,7 +78,7 @@ public class AcessoFuncionalidadeDAO {
     // DELETE
     public String deletar(int idAcesso) {
         try {
-            PreparedStatement stmt = conn.prepareStatement("DELETE FROM acessos_funcionalidade WHERE idAcesso = ?");
+            PreparedStatement stmt = conn.prepareStatement("DELETE FROM acessos_funcionalidade WHERE id_acesso = ?");
             stmt.setInt(1, idAcesso);
             stmt.execute();
             stmt.close();

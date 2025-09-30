@@ -20,11 +20,12 @@ public class PacienteDAO {
     //  CREATE
     public String inserir(Paciente paciente) {
         try {
-            PreparedStatement stmt = conn.prepareStatement("INSERT INTO pacientes VALUES (?, ?, ?, ?)");
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO pacientes VALUES (?, ?, ?, ?, ?)");
             stmt.setInt(1, paciente.getIdPaciente());
             stmt.setString(2, paciente.getNome());
             stmt.setString(3, paciente.getEmail());
             stmt.setString(4, paciente.getTelefone());
+            stmt.setString(5, paciente.getAcompanhante());
             stmt.execute();
             stmt.close();
             return "Dados inseridos na tabela";
@@ -48,6 +49,7 @@ public class PacienteDAO {
                 paciente.setNome(rs.getString(2));
                 paciente.setEmail(rs.getString(3));
                 paciente.setTelefone(rs.getString(4));
+                paciente.setTelefone(rs.getString(5));
 
                 listaPacientes.add(paciente);
             }
@@ -66,7 +68,8 @@ public class PacienteDAO {
             stmt.setString(1, paciente.getNome());
             stmt.setString(2, paciente.getEmail());
             stmt.setString(3, paciente.getTelefone());
-            stmt.setInt(4, paciente.getIdPaciente());
+            stmt.setString(4, paciente.getAcompanhante());
+            stmt.setInt(5, paciente.getIdPaciente());
             stmt.executeUpdate();
             stmt.close();
             return "Dados atualizados na tabela";

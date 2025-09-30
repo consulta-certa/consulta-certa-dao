@@ -21,11 +21,10 @@ public class LembreteDAO {
     // CREATE
     public String inserir(Lembrete lembrete) {
         try {
-            PreparedStatement stmt = conn.prepareStatement("INSERT INTO lembretes VALUES (?, ?, ?, ?)");
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO lembretes VALUES (?, ?, ?)");
             stmt.setInt(1, lembrete.getIdLembrete());
-            stmt.setString(2, lembrete.getCanalEnvio());
-            stmt.setTimestamp(3, java.sql.Timestamp.valueOf(lembrete.getDataEnvio()));
-            stmt.setInt(4, lembrete.getIdConsulta());
+            stmt.setTimestamp(2, java.sql.Timestamp.valueOf(lembrete.getDataEnvio()));
+            stmt.setInt(3, lembrete.getIdConsulta());
             stmt.execute();
             stmt.close();
             return "Lembrete inserido com sucesso!";
@@ -46,9 +45,8 @@ public class LembreteDAO {
                 Lembrete lembrete = new Lembrete();
 
                 lembrete.setIdLembrete(rs.getInt(1));
-                lembrete.setCanalEnvio(rs.getString(2));
-                lembrete.setDataEnvio(rs.getTimestamp(3).toLocalDateTime());
-                lembrete.setIdConsulta(rs.getInt(4));
+                lembrete.setDataEnvio(rs.getTimestamp(2).toLocalDateTime());
+                lembrete.setIdConsulta(rs.getInt(3));
 
                 listaLembretes.add(lembrete);
             }
@@ -64,11 +62,10 @@ public class LembreteDAO {
     // UPDATE
     public String atualizar(Lembrete lembrete) {
         try {
-            PreparedStatement stmt = conn.prepareStatement("UPDATE lembretes SET canalEnvio = ?, dataEnvio = ?, idConsulta = ? WHERE idLembrete = ?");
-            stmt.setString(1, lembrete.getCanalEnvio());
-            stmt.setTimestamp(2, java.sql.Timestamp.valueOf(lembrete.getDataEnvio()));
-            stmt.setInt(3, lembrete.getIdConsulta());
-            stmt.setInt(4, lembrete.getIdLembrete());
+            PreparedStatement stmt = conn.prepareStatement("UPDATE lembretes SET dataEnvio = ?, idConsulta = ? WHERE idLembrete = ?");
+            stmt.setTimestamp(1, java.sql.Timestamp.valueOf(lembrete.getDataEnvio()));
+            stmt.setInt(2, lembrete.getIdConsulta());
+            stmt.setInt(3, lembrete.getIdLembrete());
             stmt.executeUpdate();
             stmt.close();
             return "Lembrete atualizado com sucesso!";
@@ -80,7 +77,7 @@ public class LembreteDAO {
     // DELETE
     public String deletar(int idLembrete) {
         try {
-            PreparedStatement stmt = conn.prepareStatement("DELETE FROM lembretes WHERE idLembrete = ?");
+            PreparedStatement stmt = conn.prepareStatement("DELETE FROM lembretes WHERE id_lembrete = ?");
             stmt.setInt(1, idLembrete);
             stmt.execute();
             stmt.close();

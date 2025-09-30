@@ -78,4 +78,17 @@ public class Conteudo {
     public void setDataPublicacao(LocalDateTime dataPublicacao) {
         this.dataPublicacao = dataPublicacao;
     }
+
+    @Override
+    public String toString() {
+        return (
+            "id_conteudo: " + idConteudo +
+            "\ntipo: " + tipo +
+            "\ntitulo: " + titulo +
+            "\ntexto: " + texto +
+            "\nvideo: " + video +
+            "\nimagem: " + imagem +
+            "\ndata_publicacao: " + dataPublicacao
+        );
+    }
 }

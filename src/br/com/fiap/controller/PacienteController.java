@@ -5,20 +5,20 @@ import br.com.fiap.model.entity.Paciente;
 import br.com.fiap.model.util.Validacao;
 
 import javax.swing.*;
-import java.time.LocalDateTime;
+import java.util.List;
 
 public class PacienteController {
-    private final PacienteDAO pacienteDAO;
+    private final PacienteDAO dao;
 
     public PacienteController() {
-        this.pacienteDAO = new PacienteDAO();
+        this.dao = new PacienteDAO();
     }
 
     //  Execução do CREATE
-    public void inserirPaciente(String idPacienteString, String nome, String email, String telefone) {
+    public void inserirPaciente(String idPacienteString, String nome, String email, String telefone, int acompanhanteInt) {
         if (
             !Validacao.validarInteger(idPacienteString) ||
-            !Validacao.validarNome(nome) ||
+            !Validacao.validarTexto(nome) ||
             !Validacao.validarEmail(email) ||
             !Validacao.validarTelefone(telefone)
         ) {
@@ -26,24 +26,46 @@ public class PacienteController {
         }
 
         int idPaciente = Integer.parseInt(idPacienteString);
+        String acompanhante = "N";
 
-        Paciente paciente = new Paciente();
-        paciente.setIdPaciente(idPaciente);
-        paciente.setNome(nome);
-        paciente.setEmail(email);
-        paciente.setTelefone(telefone);
+        if (acompanhanteInt == 0) {
+            acompanhante = "S";
+        }
 
-        JOptionPane.showMessageDialog(null, pacienteDAO.inserir(paciente));
+        Paciente paciente = new Paciente(idPaciente, nome, email, telefone, acompanhante);
+        JOptionPane.showMessageDialog(null, dao.inserir(paciente));
     }
 
     // Execução do READ
     public void selecionarPaciente() {
+        int continuar;
+        int contador = 0;
+        List<Paciente> pacientesSelecionados = dao.selecionar();
+
+        int quantSelecionados = pacientesSelecionados.toArray().length;
+
+        do {
+            if (quantSelecionados == 0) {
+                JOptionPane.showMessageDialog(null, "Lista vazia.");
+                return;
+            }
+
+            JOptionPane.showMessageDialog(null, pacientesSelecionados.get(contador), "RESULTADOS DA QUERY EM pacientes", JOptionPane.INFORMATION_MESSAGE);
+
+            if (contador < (quantSelecionados -1)) {
+                continuar = (JOptionPane.showConfirmDialog(null, "Deseja ver o próximo registro?", "", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE));
+                contador++;
+
+            } else {
+                return;
+            }
+        } while (continuar == 0);
     }
 
     // Execução do UPDATE
-    public void atualizarPaciente(String nome, String email, String telefone, String idPacienteString) {
+    public void atualizarPaciente(String nome, String email, String telefone, int acompanhanteInt, String idPacienteString) {
         if (
-            !Validacao.validarNome(nome) ||
+            !Validacao.validarTexto(nome) ||
             !Validacao.validarEmail(email) ||
             !Validacao.validarTelefone(telefone) ||
             !Validacao.validarInteger(idPacienteString)
@@ -52,14 +74,14 @@ public class PacienteController {
         }
 
         int idPaciente = Integer.parseInt(idPacienteString);
+        String acompanhante = "N";
 
-        Paciente paciente = new Paciente();
-        paciente.setNome(nome);
-        paciente.setEmail(email);
-        paciente.setTelefone(telefone);
-        paciente.setIdPaciente(idPaciente);
+        if (acompanhanteInt == 0) {
+            acompanhante = "S";
+        }
 
-        JOptionPane.showMessageDialog(null, pacienteDAO.atualizar(paciente));
+        Paciente paciente = new Paciente(idPaciente, nome, email, telefone, acompanhante);
+        JOptionPane.showMessageDialog(null, dao.atualizar(paciente));
     }
 
     // Execução do DELETE
@@ -69,6 +91,6 @@ public class PacienteController {
         }
 
         int idPaciente = Integer.parseInt(idPacienteString);
-        JOptionPane.showMessageDialog(null, pacienteDAO.deletar(idPaciente));
+        JOptionPane.showMessageDialog(null, dao.deletar(idPaciente));
     }
 }

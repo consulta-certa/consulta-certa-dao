@@ -17,11 +17,12 @@ public class AcompanhanteView {
 
     private void coletarInsercao() {
         String idAcompanhante = JOptionPane.showInputDialog("Informe o id do acompanhante");
+        String nome = JOptionPane.showInputDialog("Informe o nome do acompanhante");
         String email = JOptionPane.showInputDialog("Informe o email do acompanhante");
         String telefone = JOptionPane.showInputDialog("Informe o telefone do acompanhante");
         String parentesco = JOptionPane.showInputDialog("Informe o parentesco do acompanhante");
         String idPaciente = JOptionPane.showInputDialog("Informe o id do paciente associado");
-        controller.inserirAcompanhante(idAcompanhante, email, telefone, parentesco, idPaciente);
+        controller.inserirAcompanhante(idAcompanhante, nome, email, telefone, parentesco, idPaciente);
     }
 
     private void coletarSelecao() {
@@ -31,11 +32,12 @@ public class AcompanhanteView {
     private void coletarAtualizacao() {
 
         String idAcompanhante = JOptionPane.showInputDialog("Informe o id do acompanhante");
+        String nome = JOptionPane.showInputDialog("Informe o nome do acompanhante");
         String email = JOptionPane.showInputDialog("Informe o email do acompanhante");
         String telefone = JOptionPane.showInputDialog("Informe o telefone do acompanhante");
         String parentesco = JOptionPane.showInputDialog("Informe o parentesco do acompanhante");
         String idPaciente = JOptionPane.showInputDialog("Informe o id do paciente associado");
-        controller.atualizarAcompanhante(idAcompanhante, email, telefone, parentesco, idPaciente);
+        controller.atualizarAcompanhante(nome, email, telefone, parentesco, idPaciente, idAcompanhante);
     }
 
     private void coletarRemocao() {

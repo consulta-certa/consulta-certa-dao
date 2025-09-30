@@ -20,9 +20,8 @@ public class AvaliacaoView {
         String nota = JOptionPane.showInputDialog("Informe a nota da avaliação (de 0 a 5)");
         String comentario = JOptionPane.showInputDialog("Informe o comentário da avaliação");
         String dataAvaliacao = JOptionPane.showInputDialog("Informe a data da avaliação no padrão DD/MM/AAAA HH:MM");
-        String idLembrete = JOptionPane.showInputDialog("Informe o id do lembrete associado");
 
-        controller.inserirAvaliacao(idAvaliacao, nota, comentario, dataAvaliacao, idLembrete);
+        controller.inserirAvaliacao(idAvaliacao, nota, comentario, dataAvaliacao);
     }
 
     private void coletarSelecao() {
@@ -34,9 +33,8 @@ public class AvaliacaoView {
         String nota = JOptionPane.showInputDialog("Informe a nota da avaliação (de 1 a 5)");
         String comentario = JOptionPane.showInputDialog("Informe o comentário da avaliação");
         String dataAvaliacao = JOptionPane.showInputDialog("Informe a data da avaliação no padrão DD/MM/AAAA HH:MM");
-        String idLembrete = JOptionPane.showInputDialog("Informe o id do lembrete associado");
 
-        controller.atualizarAvaliacao(idAvaliacao, nota, comentario, dataAvaliacao, idLembrete);
+        controller.atualizarAvaliacao(nota, comentario, dataAvaliacao, idAvaliacao);
     }
 
     private void coletarRemocao() {

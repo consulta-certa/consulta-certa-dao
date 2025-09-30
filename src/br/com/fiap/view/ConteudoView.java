@@ -38,7 +38,7 @@ public class ConteudoView {
         String video = JOptionPane.showInputDialog("Informe a url do vídeo do conteúdo se houver");
         String imagem = JOptionPane.showInputDialog("Informe a url da imagem do conteúdo se houver");
         String dataPublicacao = JOptionPane.showInputDialog("Informe a data de publicação do conteúdo no padrão DD/MM/AAAA HH:MM");
-        controller.atualizarConteudo(idConteudo, tipo, titulo, texto, video, imagem, dataPublicacao);
+        controller.atualizarConteudo(tipo, titulo, texto, video, imagem, dataPublicacao, idConteudo);
     }
 
     private void coletarRemocao() {

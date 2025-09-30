@@ -19,7 +19,7 @@ public class ConsultaView {
         String idConsulta = JOptionPane.showInputDialog("Informe o id da consulta");
         String especialidade = JOptionPane.showInputDialog("Informe a especialidade da consulta");
         String dataConsulta = JOptionPane.showInputDialog("Informe a data da consulta no padrão DD/MM/AAAA HH:MM");
-        String status = JOptionPane.showInputDialog("Informe status da consulta (A para ativa e I para inativa)");
+        int status = JOptionPane.showConfirmDialog(null, "Informe status da consulta (A para ativa e I para inativa)", "", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         String idPaciente = JOptionPane.showInputDialog("Informe o id do paciente associado");
         controller.inserirConsulta(idConsulta, especialidade, dataConsulta, status, idPaciente);
     }
@@ -31,7 +31,7 @@ public class ConsultaView {
     private void coletarAtualizacao () {
         String especialidade = JOptionPane.showInputDialog("Informe a especialidade da consulta");
         String dataConsulta = JOptionPane.showInputDialog("Informe a data da consulta no padrão DD/MM/AAAA HH:MM");
-        String status = JOptionPane.showInputDialog("Informe status da consulta (A para ativa e I para inativa)");
+        int status = JOptionPane.showConfirmDialog(null, "Informe status da consulta (A para ativa e I para inativa)", "", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         String idPaciente = JOptionPane.showInputDialog("Informe o id do paciente associado");
         String idConsulta = JOptionPane.showInputDialog("Informe o id da consulta");
         controller.atualizarConsulta(especialidade, dataConsulta, status, idPaciente, idConsulta);

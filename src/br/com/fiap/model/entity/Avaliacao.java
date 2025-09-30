@@ -7,16 +7,14 @@ public class Avaliacao {
     private int nota;
     private String comentario;
     private LocalDateTime dataAvaliacao;
-    private int idLembrete;
 
     public Avaliacao() {}
 
-    public Avaliacao(int idAvaliacao, int nota, String comentario, LocalDateTime dataAvaliacao, int idLembrete) {
+    public Avaliacao(int idAvaliacao, int nota, String comentario, LocalDateTime dataAvaliacao) {
         this.idAvaliacao = idAvaliacao;
         this.nota = nota;
         this.comentario = comentario;
         this.dataAvaliacao = dataAvaliacao;
-        this.idLembrete = idLembrete;
     }
 
     public int getIdAvaliacao() {
@@ -51,11 +49,13 @@ public class Avaliacao {
         this.dataAvaliacao = dataAvaliacao;
     }
 
-    public int getIdLembrete() {
-        return idLembrete;
-    }
-
-    public void setIdLembrete(int idLembrete) {
-        this.idLembrete = idLembrete;
+    @Override
+    public String toString() {
+        return (
+            "\nid_avaliacao: " + idAvaliacao +
+            "\nnota: " + nota +
+            "\ncomentario: " + comentario +
+            "\ndata_avaliacao: " + dataAvaliacao
+        );
     }
 }

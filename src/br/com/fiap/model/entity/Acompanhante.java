@@ -2,6 +2,7 @@ package br.com.fiap.model.entity;
 
 public class Acompanhante {
     private int idAcompanhante;
+    private String nome;
     private String email;
     private String telefone;
     private String parentesco;
@@ -9,9 +10,10 @@ public class Acompanhante {
 
     public Acompanhante() {}
 
-    public Acompanhante(int idAcompanhante, String email, String telefone, String parentesco, int idPaciente) {
+    public Acompanhante(int idAcompanhante, String nome, String email, String telefone, String parentesco, int idPaciente) {
         this.idAcompanhante = idAcompanhante;
         this.email = email;
+        this.nome = nome;
         this.telefone = telefone;
         this.parentesco = parentesco;
         this.idPaciente = idPaciente;
@@ -23,6 +25,14 @@ public class Acompanhante {
 
     public void setIdAcompanhante(int idAcompanhante) {
         this.idAcompanhante = idAcompanhante;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getEmail() {
@@ -55,6 +65,17 @@ public class Acompanhante {
 
     public void setIdPaciente(int idPaciente) {
         this.idPaciente = idPaciente;
+    }
+
+    @Override
+    public String toString() {
+        return (
+            "\nid_acompanhante: " + idAcompanhante +
+            "\nemail: " + email +
+            "\ntelefone: " + telefone +
+            "\nparentesco: " + parentesco +
+            "\nid_paciente: " + idPaciente
+        );
     }
 }
 

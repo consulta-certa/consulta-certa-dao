@@ -7,6 +7,7 @@ import br.com.fiap.model.util.Validacao;
 
 import javax.swing.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class ConteudoController {
     private final ConteudoDAO dao;
@@ -19,11 +20,11 @@ public class ConteudoController {
     public void inserirConteudo(String idConteudoString, String tipo, String titulo, String texto, String video, String imagem, String dataPublicacaoString) {
         if (
                 !Validacao.validarInteger(idConteudoString) ||
-                !Validacao.validarNome(tipo) ||
-                !Validacao.validarNome(titulo) ||
-                !Validacao.validarNome(texto) ||
-                !Validacao.validarNome(video) ||
-                !Validacao.validarNome(imagem) ||
+                !Validacao.validarTexto(tipo) ||
+                !Validacao.validarTexto(titulo) ||
+                !Validacao.validarTexto(texto) ||
+                !Validacao.validarTexto(video) ||
+                !Validacao.validarTexto(imagem) ||
                 !Validacao.validarData(dataPublicacaoString)
         ) {
             return;
@@ -32,25 +33,58 @@ public class ConteudoController {
         int idConteudo = Integer.parseInt(idConteudoString);
         LocalDateTime dataPublicacao = LocalDateTime.parse(dataPublicacaoString, DataFormatter.formatter);
 
+        // Check constraints
+        if (dataPublicacao.isBefore(LocalDateTime.now())) {
+            JOptionPane.showMessageDialog(null, "Operação cancelada. Inserir apenas uma data válida a partir de hoje.");
+            return;
+        }
+
         Conteudo conteudo = new Conteudo(idConteudo, tipo, titulo, texto, video, imagem, dataPublicacao);
         JOptionPane.showMessageDialog(null, dao.inserir(conteudo));
     }
 
     // READ
     public void lerConteudo() {
-        JOptionPane.showMessageDialog(null, "Conteúdo não encontrado");
+        int continuar;
+        int contador = 0;
+        List<Conteudo> conteudosSelecionados = dao.selecionar();
+
+        int quantSelecionados = conteudosSelecionados.toArray().length;
+
+        do {
+            if (quantSelecionados == 0) {
+                JOptionPane.showMessageDialog(null, "Lista vazia.");
+                return;
+            }
+
+            JOptionPane.showMessageDialog(null, conteudosSelecionados.get(contador), "RESULTADOS DA QUERY EM conteudos", JOptionPane.INFORMATION_MESSAGE);
+
+            if (contador < (quantSelecionados -1)) {
+                continuar = (JOptionPane.showConfirmDialog(null, "Deseja ver o próximo registro?", "", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE));
+                contador++;
+
+            } else {
+                return;
+            }
+        } while (continuar == 0);
     }
 
     // UPDATE
-    public void atualizarConteudo(String idConteudoString, String tipo, String titulo, String texto, String video, String imagem, String dataPublicacaoString) {
-        if (!Validacao.validarInteger(idConteudoString) || !Validacao.validarNome(tipo) || !Validacao.validarNome(titulo) ||
-                !Validacao.validarNome(texto) || !Validacao.validarNome(video) || !Validacao.validarNome(imagem) ||
+    public void atualizarConteudo(String tipo, String titulo, String texto, String video, String imagem, String dataPublicacaoString, String idConteudoString) {
+        if (!Validacao.validarInteger(idConteudoString) || !Validacao.validarTexto(tipo) || !Validacao.validarTexto(titulo) ||
+                !Validacao.validarTexto(texto) || !Validacao.validarTexto(video) || !Validacao.validarTexto(imagem) ||
                 !Validacao.validarData(dataPublicacaoString)) {
             return;
         }
 
         int idConteudo = Integer.parseInt(idConteudoString);
         LocalDateTime dataPublicacao = LocalDateTime.parse(dataPublicacaoString, DataFormatter.formatter);
+
+        // Check constraints
+        if (dataPublicacao.isBefore(LocalDateTime.now())) {
+            JOptionPane.showMessageDialog(null, "Operação cancelada. Inserir apenas uma data válida a partir de hoje.");
+            return;
+        }
 
         Conteudo conteudo = new Conteudo(idConteudo, tipo, titulo, texto, video, imagem, dataPublicacao);
         JOptionPane.showMessageDialog(null, dao.atualizar(conteudo));

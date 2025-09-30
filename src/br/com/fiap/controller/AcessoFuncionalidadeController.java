@@ -5,9 +5,7 @@ import br.com.fiap.model.entity.AcessoFuncionalidade;
 import br.com.fiap.model.util.Validacao;
 
 import javax.swing.*;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class AcessoFuncionalidadeController {
     private final AcessoFuncionalidadeDAO dao;
@@ -20,7 +18,7 @@ public class AcessoFuncionalidadeController {
     public void inserirAcessoFuncionalidade(String idAcessoString, String funcionalidade, String quantidadeAcessosString, String tempoPermanenciaSegString) {
         if (
             !Validacao.validarInteger(idAcessoString) ||
-            !Validacao.validarNome(funcionalidade) ||
+            !Validacao.validarTexto(funcionalidade) ||
             !Validacao.validarInteger(quantidadeAcessosString) ||
             !Validacao.validarInteger(tempoPermanenciaSegString)
         ) {
@@ -37,7 +35,7 @@ public class AcessoFuncionalidadeController {
 
     // READ
     public void lerAcessoFuncionalidade() {
-        String continuar;
+        int continuar;
         int contador = 0;
         List<AcessoFuncionalidade> acessosSelecionados = dao.selecionar();
 
@@ -51,26 +49,21 @@ public class AcessoFuncionalidadeController {
 
             JOptionPane.showMessageDialog(null, acessosSelecionados.get(contador), "RESULTADOS DA QUERY EM acessos_funcionalidade", JOptionPane.INFORMATION_MESSAGE);
 
-            if (quantSelecionados > 0 && contador < quantSelecionados-1) {
-                continuar = (JOptionPane.showInputDialog(null, "Deseja ver o próximo registro? Informe apenas S para sim e N para não", JOptionPane.QUESTION_MESSAGE));
-
-                while (!Validacao.validarNome(continuar) || (!continuar.equalsIgnoreCase("N") && !continuar.equalsIgnoreCase("S"))) {
-                    JOptionPane.showMessageDialog(null, "Informe apenas S ou N");
-                    continuar = JOptionPane.showInputDialog(null, "Deseja ver o próximo registro? Informe apenas S para sim e N para não", JOptionPane.QUESTION_MESSAGE);
-                }
-
+            if (contador < (quantSelecionados -1)) {
+                continuar = (JOptionPane.showConfirmDialog(null, "Deseja ver o próximo registro?", "", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE));
                 contador++;
+
             } else {
                 return;
             }
-        } while (!continuar.equalsIgnoreCase("N"));
+        } while (continuar == 0);
     }
 
     // UPDATE
-    public void atualizarAcessoFuncionalidade(String idAcessoString, String funcionalidade, String quantidadeAcessosString, String tempoPermanenciaSegString) {
+    public void atualizarAcessoFuncionalidade(String funcionalidade, String quantidadeAcessosString, String tempoPermanenciaSegString, String idAcessoString) {
         if (
                 !Validacao.validarInteger(idAcessoString) ||
-                        !Validacao.validarNome(funcionalidade) ||
+                        !Validacao.validarTexto(funcionalidade) ||
                         !Validacao.validarInteger(quantidadeAcessosString) ||
                         !Validacao.validarInteger(tempoPermanenciaSegString)
         ) {

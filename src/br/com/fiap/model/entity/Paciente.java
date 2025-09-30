@@ -5,15 +5,17 @@ public class Paciente {
     private String nome;
     private String email;
     private String telefone;
+    private String acompanhante;
 
     public Paciente() {
     }
 
-    public Paciente(int idPaciente, String nome, String email, String telefone) {
+    public Paciente(int idPaciente, String nome, String email, String telefone, String acompanhante) {
         this.idPaciente = idPaciente;
         this.nome = nome;
         this.email = email;
         this.telefone = telefone;
+        this.acompanhante = acompanhante;
     }
 
     public int getIdPaciente() {
@@ -46,5 +48,24 @@ public class Paciente {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+
+    public String getAcompanhante() {
+        return acompanhante;
+    }
+
+    public void setAcompanhante(String acompanhante) {
+        this.acompanhante = acompanhante;
+    }
+
+    @Override
+    public String toString() {
+        return (
+            "id_paciente: " + idPaciente +
+            "nome: " + nome +
+            "email: " + email +
+            "telefone: " + telefone +
+            "acompanhante: " + acompanhante
+        );
     }
 }

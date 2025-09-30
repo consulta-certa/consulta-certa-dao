@@ -89,7 +89,7 @@ public class ConteudoDAO {
     // DELETE
     public String deletar(int idConteudo) {
         try {
-            PreparedStatement stmt = conn.prepareStatement("DELETE FROM conteudos WHERE idConteudo = ?");
+            PreparedStatement stmt = conn.prepareStatement("DELETE FROM conteudos WHERE id_conteudo = ?");
             stmt.setInt(1, idConteudo);
             stmt.execute();
             stmt.close();

@@ -50,9 +50,10 @@ public class AcessoFuncionalidade {
     @Override
     public String toString() {
         return (
-            String.format("--------------%n") +
-            String.format("| %40s | %30s | %20s | %10s |\n", "id_acesso","funcionalidade","quantidade_acesso", "tempo_permanencia_seg") +
-            String.format("| %40s | %30s | %20s | %10s |\n",idAcesso, funcionalidade, quantidadeAcessos, tempoPermanenciaSeg)
+            "\nid_acesso: " + idAcesso +
+            "\nfuncionalidade: " + funcionalidade +
+            "\nquantidade_acessos: " + quantidadeAcessos +
+            "\ntempo_permanencia_seg: " + tempoPermanenciaSeg
         );
     }
 }

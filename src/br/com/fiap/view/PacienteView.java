@@ -20,7 +20,8 @@ public class PacienteView {
         String nome = JOptionPane.showInputDialog("Informe o nome do paciente");
         String email = JOptionPane.showInputDialog("Informe o email do paciente");
         String telefone = JOptionPane.showInputDialog("Informe o telefone do paciente");
-        controller.inserirPaciente(idPaciente, nome, email, telefone);
+        int acompanhante = JOptionPane.showConfirmDialog(null, "O paciente tem acompanhante?", "", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        controller.inserirPaciente(idPaciente, nome, email, telefone, acompanhante);
     }
 
     private void coletarSelecao () {
@@ -31,8 +32,9 @@ public class PacienteView {
         String nome = JOptionPane.showInputDialog("Informe o nome do paciente");
         String email = JOptionPane.showInputDialog("Informe o email do paciente");
         String telefone = JOptionPane.showInputDialog("Informe o telefone do paciente");
+        int acompanhante = JOptionPane.showConfirmDialog(null, "O paciente tem acompanhante?", "", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         String idPaciente = JOptionPane.showInputDialog("Informe o id do paciente");
-        controller.atualizarPaciente(nome, email, telefone, idPaciente);
+        controller.atualizarPaciente(nome, email, telefone, acompanhante, idPaciente);
     }
 
     private void coletarRemocao () {
