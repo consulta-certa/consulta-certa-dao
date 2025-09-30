@@ -44,13 +44,14 @@ public class AcompanhanteDAO {
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
-                Acompanhante acompanhante = new Acompanhante();
-
-                acompanhante.setIdAcompanhante(rs.getInt(1));
-                acompanhante.setEmail(rs.getString(2));
-                acompanhante.setTelefone(rs.getString(3));
-                acompanhante.setParentesco(rs.getString(4));
-                acompanhante.setIdPaciente(rs.getInt(5));
+                Acompanhante acompanhante = new Acompanhante(
+                    rs.getInt(1),
+                    rs.getString(2),
+                    rs.getString(3),
+                    rs.getString(4),
+                    rs.getString(4),
+                    rs.getInt(5)
+                );
 
                 listaAcompanhantes.add(acompanhante);
             }

@@ -43,13 +43,13 @@ public class PacienteDAO {
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
-                Paciente paciente = new Paciente();
-
-                paciente.setIdPaciente(rs.getInt(1));
-                paciente.setNome(rs.getString(2));
-                paciente.setEmail(rs.getString(3));
-                paciente.setTelefone(rs.getString(4));
-                paciente.setTelefone(rs.getString(5));
+                Paciente paciente = new Paciente(
+                    rs.getInt(1),
+                    rs.getString(2),
+                    rs.getString(3),
+                    rs.getString(4),
+                    rs.getString(5)
+                );
 
                 listaPacientes.add(paciente);
             }

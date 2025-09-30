@@ -47,17 +47,17 @@ public class ContatoDAO {
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
-                Contato contato = new Contato();
-
-                contato.setIdContato(rs.getInt(1));
-                contato.setNome(rs.getString(2));
-                contato.setTelefone(rs.getString(3));
-                contato.setEmail(rs.getString(4));
-                contato.setNumero(rs.getInt(5));
-                contato.setRua(rs.getString(6));
-                contato.setBairro(rs.getString(7));
-                contato.setCidade(rs.getString(8));
-                contato.setCep(rs.getString(9));
+                Contato contato = new Contato(
+                    rs.getInt(1),
+                    rs.getString(2),
+                    rs.getString(3),
+                    rs.getString(4),
+                    rs.getInt(5),
+                    rs.getString(6),
+                    rs.getString(7),
+                    rs.getString(8),
+                    rs.getString(9)
+                );
 
                 listaContatos.add(contato);
             }

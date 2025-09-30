@@ -46,15 +46,15 @@ public class ConteudoDAO {
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
-                Conteudo conteudo = new Conteudo();
-
-                conteudo.setIdConteudo(rs.getInt(1));
-                conteudo.setTipo(rs.getString(2));
-                conteudo.setTitulo(rs.getString(3));
-                conteudo.setTexto(rs.getString(4));
-                conteudo.setVideo(rs.getString(5));
-                conteudo.setImagem(rs.getString(6));
-                conteudo.setDataPublicacao(rs.getTimestamp(7).toLocalDateTime());
+                Conteudo conteudo = new Conteudo(
+                    rs.getInt(1),
+                    rs.getString(2),
+                    rs.getString(3),
+                    rs.getString(4),
+                    rs.getString(5),
+                    rs.getString(6),
+                    rs.getTimestamp(7).toLocalDateTime()
+                );
 
                 listaConteudos.add(conteudo);
             }

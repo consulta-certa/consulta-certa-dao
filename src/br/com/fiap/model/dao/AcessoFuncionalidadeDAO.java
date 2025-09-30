@@ -42,13 +42,12 @@ public class AcessoFuncionalidadeDAO {
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
-                AcessoFuncionalidade acessoFuncionalidade = new AcessoFuncionalidade();
-
-                acessoFuncionalidade.setIdAcesso(rs.getInt(1));
-                acessoFuncionalidade.setFuncionalidade(rs.getString(2));
-                acessoFuncionalidade.setQuantidadeAcessos(rs.getInt(3));
-                acessoFuncionalidade.setTempoPermanenciaSeg(rs.getInt(4));
-
+                AcessoFuncionalidade acessoFuncionalidade = new AcessoFuncionalidade(
+                    rs.getInt(1),
+                    rs.getString(2),
+                    rs.getInt(3),
+                    rs.getInt(4)
+                );
                 listaAcessos.add(acessoFuncionalidade);
             }
 

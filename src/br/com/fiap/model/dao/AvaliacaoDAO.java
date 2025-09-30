@@ -42,12 +42,12 @@ public class AvaliacaoDAO {
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
-                Avaliacao avaliacao = new Avaliacao();
-
-                avaliacao.setIdAvaliacao(rs.getInt(1));
-                avaliacao.setNota(rs.getInt(2));
-                avaliacao.setComentario(rs.getString(3));
-                avaliacao.setDataAvaliacao(rs.getTimestamp(4).toLocalDateTime());
+                Avaliacao avaliacao = new Avaliacao(
+                    rs.getInt(1),
+                    rs.getInt(2),
+                    rs.getString(3),
+                    rs.getTimestamp(4).toLocalDateTime()
+                );
 
                 listaAvaliacoes.add(avaliacao);
             }

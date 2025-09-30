@@ -45,13 +45,13 @@ public List<Consulta> selecionar() {
         ResultSet rs = stmt.executeQuery();
 
         while (rs.next()) {
-            Consulta consulta = new Consulta();
-
-            consulta.setIdConsulta(rs.getInt(1));
-            consulta.setEspecialidade(rs.getString(2));
-            consulta.setDataConsulta(rs.getTimestamp(3).toLocalDateTime());
-            consulta.setStatus(rs.getString(4));
-            consulta.setIdPaciente(rs.getInt(5));
+            Consulta consulta = new Consulta(
+                rs.getInt(1),
+                rs.getString(2),
+                rs.getTimestamp(3).toLocalDateTime(),
+                rs.getString(4),
+                rs.getInt(5)
+            );
 
             listaConsultas.add(consulta);
         }

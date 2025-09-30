@@ -42,11 +42,11 @@ public class LembreteDAO {
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
-                Lembrete lembrete = new Lembrete();
-
-                lembrete.setIdLembrete(rs.getInt(1));
-                lembrete.setDataEnvio(rs.getTimestamp(2).toLocalDateTime());
-                lembrete.setIdConsulta(rs.getInt(3));
+                Lembrete lembrete = new Lembrete(
+                    rs.getInt(1),
+                    rs.getTimestamp(2).toLocalDateTime(),
+                    rs.getInt(3)
+                );
 
                 listaLembretes.add(lembrete);
             }

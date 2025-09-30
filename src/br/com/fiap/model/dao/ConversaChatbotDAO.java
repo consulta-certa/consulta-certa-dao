@@ -41,11 +41,11 @@ public class ConversaChatbotDAO {
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
-                ConversaChatbot conversaChatbot = new ConversaChatbot();
-
-                conversaChatbot.setIdConversa(rs.getInt(1));
-                conversaChatbot.setPergunta(rs.getString(2));
-                conversaChatbot.setAprovacao(rs.getString(3));
+                ConversaChatbot conversaChatbot = new ConversaChatbot(
+                    rs.getInt(1),
+                    rs.getString(2),
+                    rs.getString(3)
+                );
 
                 listaConversas.add(conversaChatbot);
             }
