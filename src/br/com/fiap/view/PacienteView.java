@@ -42,3 +42,6 @@ public class PacienteView {
         controller.deletarPaciente(idPaciente);
     }
 }
+
+
+
