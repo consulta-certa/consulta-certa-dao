@@ -91,6 +91,11 @@ public class ConteudoController {
             return;
         }
 
+        if (!tipo.equalsIgnoreCase("p") && !tipo.equalsIgnoreCase("t") && !tipo.equalsIgnoreCase("f")) {
+            JOptionPane.showMessageDialog(null, "Operação cancelada. Inserir apenas um dos tipos disponíveis: P para guias do portal, T para guias de teleconsulta ou F para faqs.");
+            return;
+        }
+
         Conteudo conteudo = new Conteudo(idConteudo, tipo, titulo, texto, video, imagem, dataPublicacao);
         JOptionPane.showMessageDialog(null, dao.atualizar(conteudo));
     }
